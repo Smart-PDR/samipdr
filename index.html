@@ -1,3813 +1,1468 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="rainbow">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=none">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>Mihra Öğreniyor</title>
-<meta name="description" content="Mihra Öğreniyor - 24-36 Ay Çocuk Gelişim Uygulaması">
-<meta name="author" content="Mihra Öğreniyor">
-<meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="author" content="Mihra Öğreniyor © 2025 - Tüm Hakları Saklıdır">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== KOPYA KORUMA ===== */
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-:root {
-  --primary: #6C63FF;
-  --primary-light: #8B83FF;
-  --secondary: #FF6B6B;
-  --accent: #4ECDC4;
-  --accent2: #FFE66D;
-  --bg: #F0F2FF;
-  --card-bg: #FFFFFF;
-  --text: #2D3436;
-  --text-light: #636E72;
-  --shadow: 0 8px 32px rgba(108,99,255,0.15);
-  --shadow-hover: 0 12px 40px rgba(108,99,255,0.25);
-  --radius: 20px;
-  --radius-sm: 12px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --zoom: 1;
-}
-
-[data-theme="ocean"] {
-  --primary: #0984E3;
-  --primary-light: #74B9FF;
-  --secondary: #E17055;
-  --accent: #00CEC9;
-  --accent2: #FFEAA7;
-  --bg: #E8F4FD;
-}
-
-[data-theme="forest"] {
-  --primary: #00B894;
-  --primary-light: #55EFC4;
-  --secondary: #E17055;
-  --accent: #6C5CE7;
-  --accent2: #FDCB6E;
-  --bg: #E8F8F0;
-}
-
-[data-theme="sunset"] {
-  --primary: #E17055;
-  --primary-light: #FAB1A0;
-  --secondary: #6C5CE7;
-  --accent: #FDCB6E;
-  --accent2: #FF7675;
-  --bg: #FFF0EB;
-}
-
-[data-theme="candy"] {
-  --primary: #E84393;
-  --primary-light: #FD79A8;
-  --secondary: #6C5CE7;
-  --accent: #00CEC9;
-  --accent2: #FFEAA7;
-  --bg: #FDE8F0;
-}
-
-[data-theme="night"] {
-  --primary: #A29BFE;
-  --primary-light: #6C5CE7;
-  --secondary: #FF7675;
-  --accent: #74B9FF;
-  --accent2: #FFEAA7;
-  --bg: #2D3436;
-  --card-bg: #3D4447;
-  --text: #DFE6E9;
-  --text-light: #B2BEC3;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-body {
-  zoom: var(--zoom);
-  -moz-transform: scale(var(--zoom));
-  -moz-transform-origin: 0 0;
-}
-
-/* ===== SPLASH SCREEN ===== */
-.splash-screen {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, #6C63FF 0%, #4ECDC4 50%, #FFE66D 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.splash-screen.hide {
-  opacity: 0;
-  transform: scale(1.1);
-  pointer-events: none;
-}
-
-.splash-logo {
-  width: 150px;
-  height: 150px;
-  background: white;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 80px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  animation: splashBounce 2s ease infinite;
-  margin-bottom: 30px;
-}
-
-@keyframes splashBounce {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-15px) rotate(-3deg); }
-  75% { transform: translateY(-5px) rotate(3deg); }
-}
-
-.splash-title {
-  font-size: 42px;
-  font-weight: 800;
-  color: white;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  margin-bottom: 10px;
-  letter-spacing: -1px;
-}
-
-.splash-subtitle {
-  font-size: 18px;
-  color: rgba(255,255,255,0.9);
-  font-weight: 500;
-  margin-bottom: 40px;
-}
-
-.splash-loader {
-  width: 200px;
-  height: 6px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.splash-loader-bar {
-  width: 0%;
-  height: 100%;
-  background: white;
-  border-radius: 3px;
-  transition: width 0.3s ease;
-}
-
-.splash-version {
-  position: absolute;
-  bottom: 30px;
-  color: rgba(255,255,255,0.7);
-  font-size: 13px;
-}
-
-/* ===== TOP BAR ===== */
-.top-bar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(108,99,255,0.1);
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-}
-
-.top-bar-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.app-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 4px 12px rgba(108,99,255,0.3);
-}
-
-.app-name {
-  font-size: 18px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.top-btn {
-  width: 38px;
-  height: 38px;
-  border: none;
-  background: var(--bg);
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-  position: relative;
-}
-
-.top-btn:hover {
-  transform: scale(1.1);
-  background: var(--primary);
-}
-
-.top-btn:hover::after {
-  color: white;
-}
-
-.timer-display {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  padding: 6px 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  min-width: 65px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(108,99,255,0.3);
-}
-
-/* ===== NAVIGATION ===== */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--card-bg);
-  border-top: 1px solid rgba(108,99,255,0.1);
-  display: flex;
-  justify-content: space-around;
-  padding: 6px 8px;
-  padding-bottom: max(6px, env(safe-area-inset-bottom));
-  z-index: 1000;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 6px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  background: none;
-  color: var(--text-light);
-  font-size: 10px;
-  font-weight: 600;
-  min-width: 55px;
-}
-
-.nav-item.active {
-  color: var(--primary);
-  background: rgba(108,99,255,0.1);
-}
-
-.nav-item .nav-icon {
-  font-size: 22px;
-  line-height: 1;
-}
-
-/* ===== MAIN CONTENT ===== */
-.main-content {
-  padding: 12px;
-  padding-bottom: 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: calc(100vh - 150px);
-}
-
-/* ===== HOME PAGE ===== */
-.welcome-card {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: var(--radius);
-  padding: 24px;
-  color: white;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.welcome-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -30%;
-  width: 200px;
-  height: 200px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-}
-
-.welcome-card::after {
-  content: '';
-  position: absolute;
-  bottom: -40%;
-  left: -20%;
-  width: 150px;
-  height: 150px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 50%;
-}
-
-.welcome-greeting {
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-.welcome-message {
-  font-size: 14px;
-  opacity: 0.9;
-  line-height: 1.5;
-}
-
-.welcome-stats-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
-  position: relative;
-  z-index: 1;
-}
-
-.welcome-stat {
-  background: rgba(255,255,255,0.2);
-  border-radius: 12px;
-  padding: 10px 14px;
-  flex: 1;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.welcome-stat-value {
-  font-size: 20px;
-  font-weight: 800;
-}
-
-.welcome-stat-label {
-  font-size: 10px;
-  opacity: 0.8;
-  margin-top: 2px;
-}
-
-.section-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 20px 0 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.continue-learning {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
-  margin-bottom: 16px;
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border: 2px solid transparent;
-}
-
-.continue-learning:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-.continue-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--accent), var(--primary));
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-.continue-info h3 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.continue-info p {
-  margin: 4px 0 0;
-  font-size: 12px;
-  color: var(--text-light);
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.category-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 20px 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.category-card:hover, .category-card:active {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary);
-}
-
-.category-card .cat-emoji {
-  font-size: 44px;
-  display: block;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-  transition: var(--transition);
-}
-
-.category-card:hover .cat-emoji {
-  transform: scale(1.2) rotate(-5deg);
-}
-
-.category-card .cat-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.category-card .cat-count {
-  font-size: 10px;
-  color: var(--text-light);
-  margin-top: 4px;
-}
-
-.category-card .cat-progress {
-  width: 100%;
-  height: 4px;
-  background: var(--bg);
-  border-radius: 2px;
-  margin-top: 8px;
-  overflow: hidden;
-}
-
-.category-card .cat-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: 2px;
-  transition: width 0.5s ease;
-}
-
-/* ===== LEARN PAGE ===== */
-.learn-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.back-btn {
-  width: 42px;
-  height: 42px;
-  border: none;
-  background: var(--card-bg);
-  border-radius: 12px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-}
-
-.back-btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.learn-title {
-  font-size: 22px;
-  font-weight: 800;
-  flex: 1;
-}
-
-.view-toggle {
-  display: flex;
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 3px;
-  gap: 2px;
-}
-
-.view-toggle button {
-  padding: 8px 14px;
-  border: none;
-  background: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: var(--transition);
-  color: var(--text-light);
-}
-
-.view-toggle button.active {
-  background: var(--card-bg);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  color: var(--primary);
-}
-
-/* Grid View */
-.items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-}
-
-.item-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  border: 2px solid transparent;
-}
-
-.item-card:hover, .item-card:active {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary);
-}
-
-.item-card .item-visual {
-  width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 64px;
-  background: linear-gradient(135deg, rgba(108,99,255,0.05), rgba(78,205,196,0.05));
-  position: relative;
-  overflow: hidden;
-}
-
-.item-card .item-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.item-card .item-label {
-  padding: 10px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.item-card .item-label-sub {
-  font-size: 10px;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.item-card .sound-indicator {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 28px;
-  height: 28px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Single Card View */
-.single-card-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.single-card {
-  background: var(--card-bg);
-  border-radius: 24px;
-  width: 100%;
-  max-width: 400px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  animation: cardAppear 0.4s ease;
-}
-
-@keyframes cardAppear {
-  from { opacity: 0; transform: scale(0.9) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.single-card .single-visual {
-  width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 120px;
-  background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(78,205,196,0.08));
-  position: relative;
-}
-
-.single-card .single-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.single-card .single-info {
-  padding: 20px;
-  text-align: center;
-}
-
-.single-card .single-name {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.single-card .single-desc {
-  font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-
-.single-nav {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.single-nav button {
-  width: 52px;
-  height: 52px;
-  border: none;
-  background: var(--card-bg);
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.single-nav button:hover {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.1);
-}
-
-.single-nav .speak-btn {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  font-size: 28px;
-}
-
-.single-nav .speak-btn:hover {
-  transform: scale(1.15);
-}
-
-.card-counter {
-  font-size: 14px;
-  color: var(--text-light);
-  font-weight: 600;
-  background: var(--card-bg);
-  padding: 6px 16px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-
-/* ===== GAMES PAGE ===== */
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 14px;
-}
-
-.game-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.game-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-.game-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary);
-}
-
-.game-card .game-emoji {
-  font-size: 48px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.game-card .game-name {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.game-card .game-desc {
-  font-size: 11px;
-  color: var(--text-light);
-  margin-top: 4px;
-}
-
-.game-card .game-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--accent2);
-  color: #333;
-  font-size: 9px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-/* ===== GAME AREA ===== */
-.game-area {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.game-area .game-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.game-score {
-  background: linear-gradient(135deg, var(--accent2), var(--secondary));
-  color: white;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(255,107,107,0.3);
-}
-
-.game-question {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.4;
-}
-
-.game-question-emoji {
-  font-size: 80px;
-  margin: 16px 0;
-  display: block;
-  animation: questionBounce 1s ease infinite;
-}
-
-@keyframes questionBounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.game-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.game-option {
-  background: var(--card-bg);
-  border: 3px solid var(--bg);
-  border-radius: 16px;
-  padding: 16px;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 36px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.game-option span {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.game-option:hover {
-  border-color: var(--primary);
-  transform: scale(1.03);
-}
-
-.game-option.correct {
-  border-color: #00B894;
-  background: rgba(0,184,148,0.1);
-  animation: correctPulse 0.5s ease;
-}
-
-.game-option.wrong {
-  border-color: #FF7675;
-  background: rgba(255,118,117,0.1);
-  animation: wrongShake 0.5s ease;
-}
-
-@keyframes correctPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-@keyframes wrongShake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
-}
-
-.game-feedback {
-  font-size: 48px;
-  margin: 16px 0;
-  animation: feedbackAppear 0.4s ease;
-}
-
-@keyframes feedbackAppear {
-  from { transform: scale(0) rotate(-180deg); opacity: 0; }
-  to { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-
-.game-next-btn {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(108,99,255,0.3);
-}
-
-.game-next-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-}
-
-/* Matching Game Specific */
-.matching-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 350px;
-  margin: 0 auto 20px;
-}
-
-.matching-card {
-  aspect-ratio: 1;
-  background: var(--card-bg);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  border: 3px solid transparent;
-  position: relative;
-}
-
-.matching-card.flipped {
-  border-color: var(--primary);
-  background: rgba(108,99,255,0.05);
-}
-
-.matching-card.matched {
-  border-color: #00B894;
-  background: rgba(0,184,148,0.1);
-  pointer-events: none;
-}
-
-.matching-card .card-back {
-  font-size: 28px;
-}
-
-.matching-card.flipped .card-back,
-.matching-card.matched .card-back {
-  display: none;
-}
-
-.matching-card .card-front {
-  display: none;
-}
-
-.matching-card.flipped .card-front,
-.matching-card.matched .card-front {
-  display: flex;
-}
-
-/* ===== STATS PAGE ===== */
-.stats-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.stats-overview {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.stat-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-.stat-card .stat-icon {
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.stat-card .stat-value {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.stat-card .stat-label {
-  font-size: 11px;
-  color: var(--text-light);
-  font-weight: 600;
-  margin-top: 2px;
-}
-
-.chart-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
-}
-
-.chart-title {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bar-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.bar-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bar-label {
-  font-size: 11px;
-  font-weight: 600;
-  width: 70px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.bar-track {
-  flex: 1;
-  height: 22px;
-  background: var(--bg);
-  border-radius: 11px;
-  overflow: hidden;
-  position: relative;
-}
-
-.bar-fill {
-  height: 100%;
-  border-radius: 11px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 1s ease;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  color: white;
-  min-width: 30px;
-}
-
-.heatmap {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-}
-
-.heatmap-cell {
-  aspect-ratio: 1;
-  border-radius: 4px;
-  background: var(--bg);
-  position: relative;
-}
-
-.heatmap-cell.level-1 { background: rgba(108,99,255,0.15); }
-.heatmap-cell.level-2 { background: rgba(108,99,255,0.3); }
-.heatmap-cell.level-3 { background: rgba(108,99,255,0.5); }
-.heatmap-cell.level-4 { background: rgba(108,99,255,0.7); }
-.heatmap-cell.level-5 { background: rgba(108,99,255,0.9); }
-
-.heatmap-labels {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.heatmap-labels span {
-  font-size: 9px;
-  text-align: center;
-  color: var(--text-light);
-  font-weight: 600;
-}
-
-.time-chart {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  height: 100px;
-  padding: 8px 0;
-}
-
-.time-bar {
-  flex: 1;
-  background: linear-gradient(to top, var(--primary), var(--accent));
-  border-radius: 4px 4px 0 0;
-  min-height: 4px;
-  transition: height 1s ease;
-  position: relative;
-}
-
-.time-bar-label {
-  position: absolute;
-  bottom: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 8px;
-  color: var(--text-light);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.activity-log {
-  max-height: 200px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.activity-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  background: var(--bg);
-  border-radius: 10px;
-  font-size: 12px;
-}
-
-.activity-item .act-time {
-  font-weight: 700;
-  color: var(--primary);
-  min-width: 50px;
-}
-
-.activity-item .act-icon {
-  font-size: 18px;
-}
-
-.reset-stats-btn {
-  background: #FF7675;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-  width: 100%;
-  margin-top: 8px;
-}
-
-.reset-stats-btn:hover {
-  background: #D63031;
-  transform: scale(1.02);
-}
-
-/* ===== SETTINGS PAGE ===== */
-.settings-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.settings-group {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.settings-group-title {
-  padding: 12px 16px 6px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.setting-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--bg);
-}
-
-.setting-item:last-child {
-  border-bottom: none;
-}
-
-.setting-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.setting-icon {
-  font-size: 22px;
-}
-
-.setting-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.setting-name {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.setting-desc {
-  font-size: 11px;
-  color: var(--text-light);
-}
-
-.theme-options {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding: 8px 16px 14px;
-}
-
-.theme-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-
-.theme-btn.active {
-  border-color: var(--text);
-  transform: scale(1.15);
-}
-
-.theme-btn[data-theme="default"] { background: linear-gradient(135deg, #6C63FF, #4ECDC4); }
-.theme-btn[data-theme="ocean"] { background: linear-gradient(135deg, #0984E3, #00CEC9); }
-.theme-btn[data-theme="forest"] { background: linear-gradient(135deg, #00B894, #55EFC4); }
-.theme-btn[data-theme="sunset"] { background: linear-gradient(135deg, #E17055, #FDCB6E); }
-.theme-btn[data-theme="candy"] { background: linear-gradient(135deg, #E84393, #FD79A8); }
-.theme-btn[data-theme="night"] { background: linear-gradient(135deg, #2D3436, #636E72); }
-
-/* Toggle Switch */
-.toggle-switch {
-  width: 48px;
-  height: 28px;
-  background: #DFE6E9;
-  border-radius: 14px;
-  position: relative;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  padding: 0;
-}
-
-.toggle-switch.active {
-  background: var(--primary);
-}
-
-.toggle-switch::after {
-  content: '';
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  background: white;
-  border-radius: 50%;
-  top: 3px;
-  left: 3px;
-  transition: var(--transition);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-.toggle-switch.active::after {
-  left: 23px;
-}
-
-/* ===== ZOOM CONTROLS ===== */
-.zoom-controls {
-  position: fixed;
-  right: 12px;
-  bottom: 75px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 999;
-}
-
-.zoom-btn {
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: var(--card-bg);
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.zoom-btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.zoom-level {
-  text-align: center;
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--text-light);
-}
-
-/* ===== PAGE TRANSITIONS ===== */
-.page {
-  display: none;
-  animation: pageIn 0.3s ease;
-}
-
-.page.active {
-  display: block;
-}
-
-@keyframes pageIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== MODAL ===== */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 5000;
-  padding: 20px;
-  backdrop-filter: blur(5px);
-}
-
-.modal-overlay.show {
-  display: flex;
-  animation: modalIn 0.3s ease;
-}
-
-@keyframes modalIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal {
-  background: var(--card-bg);
-  border-radius: 24px;
-  padding: 24px;
-  max-width: 380px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  animation: modalSlide 0.3s ease;
-}
-
-@keyframes modalSlide {
-  from { transform: scale(0.9) translateY(20px); }
-  to { transform: scale(1) translateY(0); }
-}
-
-.modal h2 {
-  font-size: 20px;
-  margin: 10px 0;
-}
-
-.modal p {
-  font-size: 14px;
-  color: var(--text-light);
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.modal-emoji {
-  font-size: 56px;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.modal-btn {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.modal-btn.primary {
-  background: var(--primary);
-  color: white;
-}
-
-.modal-btn.secondary {
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* ===== CONFETTI ===== */
-.confetti-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-  animation: confettiFall 3s ease-in forwards;
-}
-
-@keyframes confettiFall {
-  0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .category-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .items-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .games-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .splash-title {
-    font-size: 32px;
-  }
-  .welcome-greeting {
-    font-size: 22px;
-  }
-  .stats-overview {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .category-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .items-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .games-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .stats-overview {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .category-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  .items-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
-  border-radius: 3px;
-}
-
-/* ===== PRINT PROTECTION ===== */
-@media print {
-  body { display: none !important; }
-}
-
-/* ===== ACHIEVEMENT BADGE ===== */
-.achievement-popup {
-  position: fixed;
-  top: 80px;
-  right: 12px;
-  background: linear-gradient(135deg, var(--accent2), #FFA502);
-  color: #333;
-  padding: 14px 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(255,165,2,0.4);
-  display: none;
-  align-items: center;
-  gap: 10px;
-  z-index: 2000;
-  animation: achieveIn 0.5s ease;
-  max-width: 280px;
-}
-
-.achievement-popup.show {
-  display: flex;
-}
-
-@keyframes achieveIn {
-  from { transform: translateX(100%) rotate(10deg); opacity: 0; }
-  to { transform: translateX(0) rotate(0deg); opacity: 1; }
-}
-
-.achieve-icon {
-  font-size: 32px;
-}
-
-.achieve-text h4 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.achieve-text p {
-  margin: 2px 0 0;
-  font-size: 11px;
-  opacity: 0.8;
-}
-
-/* Milestone Tracker */
-.milestone-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
-}
-
-.milestone-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--bg);
-}
-
-.milestone-item:last-child {
-  border-bottom: none;
-}
-
-.milestone-check {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.milestone-check.done {
-  background: #00B894;
-  color: white;
-}
-
-.milestone-text {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.milestone-text.done {
-  text-decoration: line-through;
-  color: var(--text-light);
-}
-
-/* Drag & Drop Sorting Game */
-.sort-containers {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.sort-bucket {
-  flex: 1;
-  min-height: 120px;
-  background: var(--bg);
-  border: 3px dashed rgba(108,99,255,0.3);
-  border-radius: 16px;
-  padding: 10px;
-  text-align: center;
-  transition: var(--transition);
-}
-
-.sort-bucket.drag-over {
-  border-color: var(--primary);
-  background: rgba(108,99,255,0.05);
-}
-
-.sort-bucket-label {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--primary);
-}
-
-.sort-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.sort-item {
-  font-size: 36px;
-  padding: 8px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  cursor: grab;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  border: 2px solid transparent;
-}
-
-.sort-item:active {
-  cursor: grabbing;
-  transform: scale(1.1);
-}
-
-.sort-item.in-bucket {
-  font-size: 28px;
-  padding: 6px;
-}
-
-/* Daily tip */
-.daily-tip {
-  background: linear-gradient(135deg, rgba(78,205,196,0.1), rgba(108,99,255,0.1));
-  border: 1px solid rgba(108,99,255,0.15);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.daily-tip-icon {
-  font-size: 24px;
-  flex-shrink: 0;
-}
-
-.daily-tip-text {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text);
-}
-
-.daily-tip-text strong {
-  color: var(--primary);
-}
-
-/* Trophy Cabinet */
-.trophy-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.trophy-item {
-  text-align: center;
-  padding: 10px 4px;
-  background: var(--bg);
-  border-radius: 12px;
-  transition: var(--transition);
-}
-
-.trophy-item.earned {
-  background: linear-gradient(135deg, rgba(255,230,109,0.3), rgba(255,165,2,0.2));
-}
-
-.trophy-item.locked {
-  opacity: 0.4;
-  filter: grayscale(1);
-}
-
-.trophy-emoji {
-  font-size: 28px;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.trophy-name {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--text-light);
-}
+/*! Mihra Öğreniyor © 2025 - Bu uygulama telif hakları ile korunmaktadır. Kopyalanması, çoğaltılması ve izinsiz kullanılması yasaktır. */
+:root{--c1:#FF6B6B;--c2:#4ECDC4;--c3:#FFD93D;--c4:#A8E6CF;--c5:#FF8B94;--c6:#6C5CE7;--bg:#FFF5F0;--bg2:#FFFFFF;--text:#2D3436;--text2:#636E72;--shadow:0 4px 15px rgba(0,0,0,.08);--shadow2:0 8px 30px rgba(0,0,0,.12);--radius:20px;--radius2:16px}
+[data-theme="ocean"]{--c1:#0984E3;--c2:#00CEC9;--c3:#74B9FF;--c4:#81ECEC;--c5:#A29BFE;--c6:#6C5CE7;--bg:#E8F4FD;--bg2:#FFFFFF;--text:#2D3436;--text2:#636E72}
+[data-theme="forest"]{--c1:#00B894;--c2:#55E6C1;--c3:#F9CA24;--c4:#BADC58;--c5:#6AB04C;--c6:#2C3A47;--bg:#F0FFF4;--bg2:#FFFFFF;--text:#2D3436;--text2:#636E72}
+[data-theme="princess"]{--c1:#FD79A8;--c2:#E84393;--c3:#FDCB6E;--c4:#FAB1A0;--c5:#FF7675;--c6:#A29BFE;--bg:#FFF0F6;--bg2:#FFFFFF;--text:#2D3436;--text2:#636E72}
+[data-theme="night"]{--c1:#A29BFE;--c2:#74B9FF;--c3:#FFEAA7;--c4:#81ECEC;--c5:#FD79A8;--c6:#6C5CE7;--bg:#1A1A2E;--bg2:#16213E;--text:#FFFFFF;--text2:#B2BEC3}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;height:100dvh;width:100vw}
+#app-wrapper{width:100%;height:100%;overflow:hidden;position:relative;transform-origin:top center;transition:transform .3s ease}
+#app{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;position:relative;scroll-behavior:smooth}
+#app::-webkit-scrollbar{width:6px}
+#app::-webkit-scrollbar-thumb{background:var(--c1);border-radius:3px}
+.screen{display:none;min-height:100%;animation:fadeIn .4s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{0%{transform:scale(0);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rainbow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes bounceIn{0%{transform:scale(0.3);opacity:0}50%{transform:scale(1.05)}70%{transform:scale(0.9)}100%{transform:scale(1);opacity:1}}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes confettiFall{0%{transform:translateY(-100vh) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+@keyframes starPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@keyframes glow{0%,100%{box-shadow:0 0 5px var(--c1)}50%{box-shadow:0 0 20px var(--c1),0 0 40px var(--c2)}}
+
+/* SPLASH */
+.splash{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;height:100dvh;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c6));background-size:300% 300%;animation:rainbow 4s ease infinite;position:relative;overflow:hidden}
+.splash::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(255,255,255,.15) 0%,transparent 50%)}
+.splash-logo{font-size:clamp(2.5rem,7vw,4.5rem);font-weight:900;color:#FFF;text-shadow:0 4px 20px rgba(0,0,0,.2);animation:bounceIn 1s ease;text-align:center;line-height:1.2}
+.splash-sub{font-size:clamp(.9rem,2.5vw,1.3rem);color:rgba(255,255,255,.9);margin-top:10px;animation:fadeInUp 1s ease .3s both}
+.splash-emoji{font-size:clamp(3rem,10vw,6rem);animation:float 2s ease-in-out infinite;margin:30px 0}
+.splash-btn{margin-top:30px;padding:16px 50px;background:#FFF;color:var(--c1);font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;border:none;border-radius:50px;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.15);animation:fadeInUp 1s ease .6s both;transition:all .3s ease}
+.splash-btn:hover{transform:scale(1.05);box-shadow:0 12px 35px rgba(0,0,0,.2)}
+.splash-btn:active{transform:scale(.95)}
+.splash-stars{position:absolute;inset:0;pointer-events:none}
+.splash-star{position:absolute;color:rgba(255,255,255,.6);animation:starPulse 2s ease infinite}
+.splash-ver{position:absolute;bottom:15px;color:rgba(255,255,255,.5);font-size:.75rem}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:100;background:var(--bg2);padding:8px 12px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);border-bottom:3px solid var(--c1)}
+.header-title{font-weight:800;font-size:clamp(.85rem,2.5vw,1.1rem);color:var(--c1);flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-btn{width:38px;height:38px;border-radius:12px;border:none;background:var(--bg);color:var(--text);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.header-btn:hover{background:var(--c1);color:#FFF;transform:scale(1.05)}
+.header-btn:active{transform:scale(.9)}
+.timer-badge{background:linear-gradient(135deg,var(--c1),var(--c5));color:#FFF;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0}
+.timer-badge::before{content:'⏱️';font-size:.85rem}
+
+/* NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--bg2);display:flex;padding:6px 8px;padding-bottom:max(6px,env(safe-area-inset-bottom));box-shadow:0 -4px 15px rgba(0,0,0,.08);border-top:2px solid rgba(0,0,0,.04);gap:4px}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:6px 2px;border-radius:12px;cursor:pointer;transition:all .2s;gap:2px;border:none;background:transparent;font-family:'Nunito',sans-serif;color:var(--text2)}
+.nav-item.active{background:linear-gradient(135deg,var(--c1),var(--c5));color:#FFF;transform:scale(1.02)}
+.nav-item:active{transform:scale(.92)}
+.nav-icon{font-size:1.3rem;line-height:1}
+.nav-label{font-size:.6rem;font-weight:700;line-height:1}
+
+/* HOME */
+.home-content{padding:12px;padding-bottom:80px}
+.welcome-card{background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:var(--radius);padding:20px;color:#FFF;margin-bottom:16px;position:relative;overflow:hidden}
+.welcome-card::after{content:'🌟';position:absolute;right:15px;top:50%;transform:translateY(-50%);font-size:3rem;opacity:.3}
+.welcome-name{font-size:1.5rem;font-weight:900}
+.welcome-msg{font-size:.9rem;opacity:.9;margin-top:4px}
+.daily-word{background:var(--bg2);border-radius:var(--radius2);padding:16px;margin-bottom:16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;cursor:pointer;transition:transform .2s}
+.daily-word:active{transform:scale(.97)}
+.daily-emoji{font-size:2.5rem;background:var(--bg);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.daily-label{font-size:.7rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.daily-name{font-size:1.2rem;font-weight:800;color:var(--c1)}
+.daily-cat{font-size:.75rem;color:var(--text2)}
+.section-title{font-size:1rem;font-weight:800;color:var(--text);margin:16px 0 10px;display:flex;align-items:center;gap:6px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.cat-card{background:var(--bg2);border-radius:var(--radius2);padding:14px;text-align:center;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);position:relative;overflow:hidden;border:2px solid transparent}
+.cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow2);border-color:var(--c1)}
+.cat-card:active{transform:scale(.95)}
+.cat-icon{font-size:2.2rem;margin-bottom:6px;display:block}
+.cat-name{font-size:.85rem;font-weight:700;color:var(--text)}
+.cat-count{font-size:.7rem;color:var(--text2);margin-top:2px}
+.cat-progress{height:4px;background:var(--bg);border-radius:2px;margin-top:8px;overflow:hidden}
+.cat-progress-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .5s ease}
+.streak-card{background:linear-gradient(135deg,var(--c3),#FF6348);border-radius:var(--radius2);padding:14px;color:#FFF;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.streak-fire{font-size:2rem}
+.streak-num{font-size:1.5rem;font-weight:900}
+.streak-label{font-size:.75rem;opacity:.9}
+
+/* CATEGORY VIEW */
+.view-controls{display:flex;gap:6px;padding:10px 12px;background:var(--bg2);align-items:center;flex-wrap:wrap}
+.view-btn{padding:6px 14px;border-radius:20px;border:2px solid var(--c1);background:transparent;color:var(--c1);font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s}
+.view-btn.active{background:var(--c1);color:#FFF}
+.view-btn:active{transform:scale(.93)}
+.speak-all-btn{padding:6px 14px;border-radius:20px;border:2px solid var(--c2);background:var(--c2);color:#FFF;font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;margin-left:auto;transition:all .2s}
+.speak-all-btn:active{transform:scale(.93)}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;padding:12px;padding-bottom:80px}
+.item-card{background:var(--bg2);border-radius:var(--radius2);padding:16px 10px;text-align:center;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:6px;border:3px solid transparent;position:relative}
+.item-card:hover{border-color:var(--c1);transform:translateY(-2px)}
+.item-card:active{transform:scale(.93)}
+.item-card.viewed{border-color:var(--c4)}
+.item-card.viewed::after{content:'✓';position:absolute;top:6px;right:6px;background:var(--c4);color:#FFF;width:18px;height:18px;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:900}
+.item-emoji{font-size:3rem;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
+.item-name{font-size:.95rem;font-weight:800;color:var(--text)}
+.item-speak{font-size:.7rem;color:var(--c1);font-weight:600}
+/* Card/Slider View */
+.card-view{padding:20px 12px;padding-bottom:80px;display:flex;flex-direction:column;align-items:center}
+.card-slider{width:100%;max-width:400px;text-align:center}
+.card-single{background:var(--bg2);border-radius:24px;padding:30px 20px;box-shadow:var(--shadow2);text-align:center;animation:popIn .4s ease;border:4px solid var(--c1)}
+.card-single .item-emoji{font-size:clamp(5rem,15vw,8rem)}
+.card-single .item-name{font-size:clamp(1.5rem,5vw,2.2rem);margin-top:12px}
+.card-nav{display:flex;justify-content:center;gap:16px;margin-top:20px;align-items:center}
+.card-nav-btn{width:50px;height:50px;border-radius:50%;border:none;background:var(--c1);color:#FFF;font-size:1.3rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.card-nav-btn:active{transform:scale(.85)}
+.card-nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.card-counter{font-size:.9rem;font-weight:700;color:var(--text2);min-width:60px;text-align:center}
+.card-speak-btn{margin-top:16px;padding:12px 30px;border-radius:50px;border:none;background:linear-gradient(135deg,var(--c1),var(--c5));color:#FFF;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow);animation:pulse 2s infinite;display:inline-flex;align-items:center;gap:8px}
+.card-speak-btn:active{transform:scale(.93);animation:none}
+
+/* GAMES */
+.games-content{padding:12px;padding-bottom:80px}
+.game-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.game-card{background:var(--bg2);border-radius:var(--radius2);padding:18px 12px;text-align:center;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);border:3px solid transparent}
+.game-card:hover{border-color:var(--c1);transform:translateY(-3px)}
+.game-card:active{transform:scale(.95)}
+.game-icon{font-size:2.5rem;margin-bottom:8px}
+.game-name{font-size:.9rem;font-weight:800;color:var(--text)}
+.game-desc{font-size:.7rem;color:var(--text2);margin-top:4px}
+.game-area{padding:12px;padding-bottom:80px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.game-score{background:linear-gradient(135deg,var(--c1),var(--c2));color:#FFF;padding:8px 20px;border-radius:20px;font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px}
+.game-question{font-size:clamp(1.1rem,3.5vw,1.5rem);font-weight:800;text-align:center;color:var(--text);padding:0 10px}
+.game-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:400px}
+.game-option{background:var(--bg2);border:3px solid var(--bg);border-radius:var(--radius2);padding:20px 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);font-size:3rem}
+.game-option:active{transform:scale(.9)}
+.game-option.correct{border-color:#00B894;background:#E8FFF5;animation:bounceIn .5s}
+.game-option.wrong{border-color:#FF6B6B;background:#FFF5F5;animation:shake .5s}
+.game-option.disabled{pointer-events:none;opacity:.6}
+.game-result{text-align:center;padding:30px;animation:bounceIn .6s}
+.game-result-emoji{font-size:4rem;margin-bottom:12px}
+.game-result-text{font-size:1.3rem;font-weight:800;color:var(--text)}
+.game-result-score{font-size:1rem;color:var(--text2);margin-top:6px}
+.game-result-btn{margin-top:16px;padding:12px 30px;border-radius:50px;border:none;background:linear-gradient(135deg,var(--c1),var(--c2));color:#FFF;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer}
+/* Memory Game */
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:400px}
+.memory-card{aspect-ratio:1;background:var(--c1);border-radius:var(--radius2);display:flex;align-items:center;justify-content:center;font-size:2rem;cursor:pointer;transition:all .3s;box-shadow:var(--shadow);position:relative}
+.memory-card.flipped,.memory-card.matched{background:var(--bg2);border:3px solid var(--c1)}
+.memory-card.matched{border-color:var(--c4);opacity:.7}
+.memory-card:not(.flipped):not(.matched)::after{content:'❓';font-size:1.5rem}
+.memory-card:active{transform:scale(.92)}
+/* Color Match */
+.color-target{width:80px;height:80px;border-radius:50%;margin:0 auto;box-shadow:var(--shadow2);border:4px solid var(--bg2)}
+.color-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:350px}
+.color-opt{padding:16px 8px;border-radius:var(--radius2);background:var(--bg2);text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);border:3px solid transparent}
+.color-opt:active{transform:scale(.9)}
+.color-opt .item-emoji{font-size:2rem}
+.color-opt .item-name{font-size:.75rem;font-weight:700;margin-top:4px}
+
+/* STATS */
+.stats-content{padding:12px;padding-bottom:80px}
+.stat-card{background:var(--bg2);border-radius:var(--radius2);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.stat-title{font-size:.85rem;font-weight:800;color:var(--c1);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.stat-item{text-align:center;padding:10px;background:var(--bg);border-radius:12px}
+.stat-num{font-size:1.4rem;font-weight:900;color:var(--c1)}
+.stat-label{font-size:.65rem;color:var(--text2);font-weight:600;margin-top:2px}
+.chart-container{width:100%;overflow:hidden;border-radius:12px;margin-top:8px}
+.chart-container canvas{width:100%;height:180px;display:block}
+.stat-list{list-style:none}
+.stat-list li{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bg);font-size:.85rem}
+.stat-list li:last-child{border:none}
+.stat-list .rank{font-weight:800;color:var(--c1);margin-right:8px;min-width:20px}
+.stat-list .sname{flex:1;font-weight:600}
+.stat-list .sval{font-weight:800;color:var(--c2)}
+.reset-btn{width:100%;padding:14px;border-radius:var(--radius2);border:2px solid #FF6B6B;background:transparent;color:#FF6B6B;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s}
+.reset-btn:hover{background:#FF6B6B;color:#FFF}
+
+/* SETTINGS */
+.settings-content{padding:12px;padding-bottom:80px}
+.setting-group{background:var(--bg2);border-radius:var(--radius2);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.setting-title{font-size:.85rem;font-weight:800;color:var(--c1);margin-bottom:10px}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px}
+.theme-btn{padding:12px 8px;border-radius:12px;border:3px solid var(--bg);text-align:center;cursor:pointer;transition:all .2s;background:var(--bg2);font-family:'Nunito',sans-serif}
+.theme-btn.active{border-color:var(--c1);box-shadow:var(--shadow)}
+.theme-btn:active{transform:scale(.93)}
+.theme-icon{font-size:1.5rem}
+.theme-name{font-size:.7rem;font-weight:700;margin-top:4px}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bg)}
+.setting-row:last-child{border:none}
+.setting-label{font-size:.85rem;font-weight:600}
+.setting-value{font-size:.85rem;font-weight:700;color:var(--c1)}
+
+/* ZOOM/FULLSCREEN BAR */
+.float-controls{position:fixed;top:50%;right:6px;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:4px}
+.float-btn{width:32px;height:32px;border-radius:10px;border:none;background:var(--bg2);color:var(--text);font-size:.9rem;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:.6}
+.float-btn:hover{opacity:1;background:var(--c1);color:#FFF}
+.float-btn:active{transform:scale(.85)}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;top:-10px;z-index:9999;pointer-events:none;animation:confettiFall 3s ease-out forwards}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s}
+.modal{background:var(--bg2);border-radius:var(--radius);padding:24px;max-width:380px;width:100%;text-align:center;animation:popIn .4s;box-shadow:var(--shadow2)}
+.modal h3{font-size:1.2rem;margin-bottom:8px;color:var(--text)}
+.modal p{font-size:.9rem;color:var(--text2);margin-bottom:16px}
+.modal-btns{display:flex;gap:8px;justify-content:center}
+.modal-btn{padding:10px 24px;border-radius:12px;border:none;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s}
+.modal-btn.primary{background:var(--c1);color:#FFF}
+.modal-btn.secondary{background:var(--bg);color:var(--text)}
+.modal-btn:active{transform:scale(.93)}
+
+/* ACHIEVEMENTS */
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
+.badge{text-align:center;padding:10px 6px;border-radius:12px;background:var(--bg);transition:all .2s}
+.badge.earned{background:linear-gradient(135deg,var(--c3),var(--c1));animation:glow 2s infinite}
+.badge-icon{font-size:1.8rem;filter:grayscale(1);opacity:.3}
+.badge.earned .badge-icon{filter:none;opacity:1}
+.badge-name{font-size:.6rem;font-weight:700;margin-top:4px;color:var(--text2)}
+.badge.earned .badge-name{color:#FFF}
+
+/* TOAST */
+.toast{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:var(--c1);color:#FFF;padding:10px 20px;border-radius:50px;font-weight:700;font-size:.85rem;z-index:600;animation:slideUp .4s ease;box-shadow:var(--shadow2)}
+
+/* RESPONSIVE */
+@media(max-width:380px){
+.cat-grid{grid-template-columns:repeat(2,1fr)}
+.items-grid{grid-template-columns:repeat(2,1fr)}
+.game-options{grid-template-columns:repeat(2,1fr)}
+.memory-grid{gap:6px}
+}
+@media(min-width:600px){
+.cat-grid{grid-template-columns:repeat(4,1fr)}
+.items-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(min-width:900px){
+.cat-grid{grid-template-columns:repeat(5,1fr)}
+.items-grid{grid-template-columns:repeat(5,1fr)}
+.card-slider{max-width:500px}
+}
+@media(orientation:landscape) and (max-height:500px){
+.header{padding:4px 10px}
+.header-btn{width:32px;height:32px;font-size:.9rem}
+.bottom-nav{padding:4px 8px}
+.nav-item{padding:4px 2px}
+.nav-icon{font-size:1rem}
+.nav-label{font-size:.55rem}
+.items-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;padding:8px}
+.item-card{padding:10px 6px}
+.item-emoji{font-size:2rem}
+.cat-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
+
+/* WATERMARK */
+body::after{content:'Mihra Öğreniyor © 2025';position:fixed;bottom:70px;right:10px;font-size:.5rem;opacity:.08;pointer-events:none;z-index:9998;font-weight:900;color:var(--text);transform:rotate(-15deg)}
+
+/* PRINT PROTECTION */
+@media print{body{display:none !important}}
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false">
+<body>
 
-<!-- SPLASH SCREEN -->
-<div class="splash-screen" id="splashScreen">
-  <div class="splash-logo">🌟</div>
-  <div class="splash-title">Mihra Öğreniyor</div>
-  <div class="splash-subtitle">24-36 Ay Gelişim Uygulaması</div>
-  <div class="splash-loader">
-    <div class="splash-loader-bar" id="splashLoader"></div>
-  </div>
-  <div class="splash-version">v2.0 Premium Edition • © 2025</div>
+<div id="app-wrapper">
+<div id="app"></div>
 </div>
 
-<!-- ACHIEVEMENT POPUP -->
-<div class="achievement-popup" id="achievementPopup">
-  <div class="achieve-icon" id="achieveIcon">🏆</div>
-  <div class="achieve-text">
-    <h4 id="achieveTitle">Başarı!</h4>
-    <p id="achieveDesc">İlk kelimeyi öğrendin!</p>
-  </div>
-</div>
-
-<!-- CONFETTI -->
-<div class="confetti-container" id="confettiContainer"></div>
-
-<!-- TOP BAR -->
-<div class="top-bar" id="topBar" style="display:none;">
-  <div class="top-bar-left">
-    <div class="app-icon">🌟</div>
-    <div class="app-name">Mihra Öğreniyor</div>
-  </div>
-  <div class="top-bar-right">
-    <div class="timer-display" id="timerDisplay">00:00</div>
-    <button class="top-btn" onclick="toggleFullscreen()" title="Tam Ekran">⛶</button>
-    <button class="top-btn" onclick="playClickSound()">🔊</button>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="main-content" id="mainContent" style="display:none;">
-
-  <!-- HOME PAGE -->
-  <div class="page active" id="pageHome">
-    <div class="welcome-card">
-      <div class="welcome-greeting">Merhaba Mihra! 👋</div>
-      <div class="welcome-message">Bugün birlikte harika şeyler öğreneceğiz!</div>
-      <div class="welcome-stats-row">
-        <div class="welcome-stat">
-          <div class="welcome-stat-value" id="homeWordsLearned">0</div>
-          <div class="welcome-stat-label">Kelime</div>
-        </div>
-        <div class="welcome-stat">
-          <div class="welcome-stat-value" id="homeGamesPlayed">0</div>
-          <div class="welcome-stat-label">Oyun</div>
-        </div>
-        <div class="welcome-stat">
-          <div class="welcome-stat-value" id="homeDaysStreak">0</div>
-          <div class="welcome-stat-label">Gün Serisi</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Daily Tip -->
-    <div class="daily-tip" id="dailyTip">
-      <div class="daily-tip-icon">💡</div>
-      <div class="daily-tip-text" id="dailyTipText">
-        <strong>Günün İpucu:</strong> Çocuğunuzla resimler hakkında konuşurken kısa ve net cümleler kullanın. "Bak, bu bir kedi. Kedi miyav der!" gibi açıklamalar yapın.
-      </div>
-    </div>
-
-    <!-- Continue Learning -->
-    <div class="continue-learning" id="continueSection" style="display:none;" onclick="continueLearning()">
-      <div class="continue-icon" id="continueIcon">📚</div>
-      <div class="continue-info">
-        <h3 id="continueTitle">Kaldığın yerden devam et</h3>
-        <p id="continueDesc">Son kategori yükleniyor...</p>
-      </div>
-    </div>
-
-    <div class="section-title">📚 Öğrenme Kategorileri</div>
-    <div class="category-grid" id="categoryGrid"></div>
-
-    <div class="section-title">🎮 Mini Oyunlar</div>
-    <div class="games-grid" id="homeGamesGrid"></div>
-
-    <!-- Milestones -->
-    <div class="section-title">🏆 Gelişim Kilometre Taşları</div>
-    <div class="milestone-card" id="milestoneCard"></div>
-
-    <!-- Trophy Cabinet -->
-    <div class="section-title">🗄️ Kupa Dolabı</div>
-    <div class="chart-card">
-      <div class="trophy-grid" id="trophyGrid"></div>
-    </div>
-  </div>
-
-  <!-- LEARN PAGE -->
-  <div class="page" id="pageLearn">
-    <div class="learn-header">
-      <button class="back-btn" onclick="goHome()">←</button>
-      <div class="learn-title" id="learnTitle">Kategori</div>
-      <div class="view-toggle">
-        <button class="active" id="gridViewBtn" onclick="setView('grid')">⊞</button>
-        <button id="singleViewBtn" onclick="setView('single')">☐</button>
-      </div>
-    </div>
-    <div id="learnContent"></div>
-  </div>
-
-  <!-- GAMES PAGE -->
-  <div class="page" id="pageGames">
-    <div class="section-title">🎮 Mini Oyunlar</div>
-    <p style="font-size:13px;color:var(--text-light);margin-bottom:16px;line-height:1.5;">
-      Oyunlar, Mihra'nın öğrendiklerini pekiştirmesi ve eğlenmesi için tasarlanmıştır. 
-      Her oyun, 24-36 ay gelişim dönemine uygun zorluk seviyesindedir.
-    </p>
-    <div class="games-grid" id="gamesGrid"></div>
-    <div id="gamePlayArea" style="display:none;"></div>
-  </div>
-
-  <!-- STATS PAGE -->
-  <div class="page" id="pageStats">
-    <div class="section-title">📊 Gelişim İstatistikleri</div>
-    <div class="stats-container" id="statsContainer"></div>
-  </div>
-
-  <!-- SETTINGS PAGE -->
-  <div class="page" id="pageSettings">
-    <div class="section-title">⚙️ Ayarlar</div>
-    <div class="settings-list" id="settingsList"></div>
-  </div>
-</div>
-
-<!-- BOTTOM NAV -->
-<div class="bottom-nav" id="bottomNav" style="display:none;">
-  <button class="nav-item active" onclick="navigate('home')">
-    <span class="nav-icon">🏠</span>
-    Ana Sayfa
-  </button>
-  <button class="nav-item" onclick="navigate('games')">
-    <span class="nav-icon">🎮</span>
-    Oyunlar
-  </button>
-  <button class="nav-item" onclick="navigate('stats')">
-    <span class="nav-icon">📊</span>
-    İstatistik
-  </button>
-  <button class="nav-item" onclick="navigate('settings')">
-    <span class="nav-icon">⚙️</span>
-    Ayarlar
-  </button>
-</div>
-
-<!-- ZOOM CONTROLS -->
-<div class="zoom-controls" id="zoomControls" style="display:none;">
-  <button class="zoom-btn" onclick="changeZoom(0.05)">+</button>
-  <div class="zoom-level" id="zoomLevel">100%</div>
-  <button class="zoom-btn" onclick="changeZoom(-0.05)">−</button>
-  <button class="zoom-btn" onclick="resetZoom()" style="font-size:11px;">↺</button>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" id="modalContent">
-    <div class="modal-emoji" id="modalEmoji">🎉</div>
-    <h2 id="modalTitle">Başlık</h2>
-    <p id="modalText">İçerik</p>
-    <div class="modal-buttons" id="modalButtons"></div>
-  </div>
+<div class="float-controls" id="floatControls" style="display:none">
+<button class="float-btn" onclick="adjustZoom(0.05)" title="Yakınlaştır">+</button>
+<button class="float-btn" onclick="adjustZoom(-0.05)" title="Uzaklaştır">−</button>
+<button class="float-btn" onclick="resetZoom()" title="Sıfırla">⟲</button>
+<button class="float-btn" onclick="toggleFullscreen()" title="Tam Ekran" id="fsBtn">⛶</button>
 </div>
 
 <script>
-// ===== KOPYA KORUMA =====
-(function(){
-  document.addEventListener('keydown', function(e){
-    if(e.ctrlKey && (e.key==='u'||e.key==='s'||e.key==='c'||e.key==='a'||e.key==='p')){
-      e.preventDefault(); return false;
-    }
-    if(e.key==='F12') { e.preventDefault(); return false; }
-    if(e.ctrlKey && e.shiftKey && (e.key==='I'||e.key==='J'||e.key==='C')){
-      e.preventDefault(); return false;
-    }
-  });
-})();
+/*! Mihra Öğreniyor © 2025 - Tüm Hakları Saklıdır - Bu kaynak kodu telif hakları ile korunmaktadır */
 
-// ===== DATA STORE =====
-const DB_KEY = 'mihra_learning_app_v2';
-
-function loadData(){
-  try {
-    const d = localStorage.getItem(DB_KEY);
-    return d ? JSON.parse(d) : getDefaultData();
-  } catch(e) { return getDefaultData(); }
-}
-
-function saveData(data){
-  try { localStorage.setItem(DB_KEY, JSON.stringify(data)); } catch(e){}
-}
-
-function getDefaultData(){
-  return {
-    firstOpen: Date.now(),
-    lastCategory: null,
-    lastItemIndex: 0,
-    lastView: 'grid',
-    theme: 'default',
-    soundEnabled: true,
-    totalTime: 0,
-    sessions: [],
-    categoryViews: {},
-    itemViews: {},
-    wordsLearned: [],
-    gamesPlayed: 0,
-    gameScores: {},
-    achievements: [],
-    dailyStreak: 0,
-    lastActiveDate: null,
-    zoom: 1,
-    trophies: [],
-    activityLog: []
-  };
-}
-
-let appData = loadData();
-
-// ===== CATEGORIES DATA =====
-const categories = [
-  {
-    id: 'pets',
-    name: 'Evcil Hayvanlar',
-    emoji: '🐱',
-    color: '#FF6B6B',
-    items: [
-      { emoji: '🐱', name: 'Kedi', sound: 'Miyav miyav!', desc: 'Kedi yumuşacık bir hayvandır. Miyav diye ses çıkarır.' },
-      { emoji: '🐶', name: 'Köpek', sound: 'Hav hav!', desc: 'Köpek sadık bir dosttur. Hav hav diye havlar.' },
-      { emoji: '🐰', name: 'Tavşan', sound: 'Tavşan zıplar!', desc: 'Tavşan uzun kulaklıdır ve zıplar.' },
-      { emoji: '🐹', name: 'Hamster', sound: 'Çıt çıt!', desc: 'Hamster küçücük ve tatlı bir hayvandır.' },
-      { emoji: '🐟', name: 'Balık', sound: 'Balık suda yüzer!', desc: 'Balık suda yaşar ve yüzgeçleri vardır.' },
-      { emoji: '🐢', name: 'Kaplumbağa', sound: 'Kaplumbağa yavaş yürür!', desc: 'Kaplumbağa sırtında kabuğu taşır.' },
-      { emoji: '🐦', name: 'Kuş', sound: 'Cik cik!', desc: 'Kuş gökyüzünde uçar ve şarkı söyler.' },
-      { emoji: '🐥', name: 'Civciv', sound: 'Cik cik cik!', desc: 'Civciv küçük ve sarı bir kuştur.' }
-    ]
-  },
-  {
-    id: 'wild',
-    name: 'Yabani Hayvanlar',
-    emoji: '🦁',
-    color: '#FFA502',
-    items: [
-      { emoji: '🦁', name: 'Aslan', sound: 'Küüür!', desc: 'Aslan ormanların kralıdır. Çok güçlüdür.' },
-      { emoji: '🐘', name: 'Fil', sound: 'Fil çok büyüktür!', desc: 'Fil uzun hortumu olan çok büyük bir hayvandır.' },
-      { emoji: '🦒', name: 'Zürafa', sound: 'Zürafa çok uzundur!', desc: 'Zürafa en uzun boylu hayvandır.' },
-      { emoji: '🐻', name: 'Ayı', sound: 'Grrr!', desc: 'Ayı büyük ve güçlü bir hayvandır.' },
-      { emoji: '🦊', name: 'Tilki', sound: 'Tilki çok zekidir!', desc: 'Tilki turuncu tüyleri olan zeki bir hayvandır.' },
-      { emoji: '🐺', name: 'Kurt', sound: 'Auuu!', desc: 'Kurt aya bakarak ulur.' },
-      { emoji: '🦋', name: 'Kelebek', sound: 'Kelebek uçar!', desc: 'Kelebek rengarenk kanatlarıyla uçar.' },
-      { emoji: '🐧', name: 'Penguen', sound: 'Penguen yürür!', desc: 'Penguen buzda yaşar ve yüzer.' },
-      { emoji: '🦓', name: 'Zebra', sound: 'Zebra çizgilidir!', desc: 'Zebra siyah beyaz çizgili bir hayvandır.' },
-      { emoji: '🐊', name: 'Timsah', sound: 'Timsah suda yaşar!', desc: 'Timsah çok güçlü çeneleri olan bir hayvandır.' },
-      { emoji: '🦜', name: 'Papağan', sound: 'Papağan konuşur!', desc: 'Papağan rengarenk tüyleri vardır ve konuşabilir.' },
-      { emoji: '🐬', name: 'Yunus', sound: 'Yunus zıplar!', desc: 'Yunus denizde yaşayan çok zeki bir hayvandır.' }
-    ]
-  },
-  {
-    id: 'fruits',
-    name: 'Meyveler',
-    emoji: '🍎',
-    color: '#FF4757',
-    items: [
-      { emoji: '🍎', name: 'Elma', sound: 'Elma kırmızıdır!', desc: 'Elma yuvarlak ve lezzetli bir meyvedir.' },
-      { emoji: '🍌', name: 'Muz', sound: 'Muz sarıdır!', desc: 'Muz sarı renkli tatlı bir meyvedir.' },
-      { emoji: '🍊', name: 'Portakal', sound: 'Portakal turuncudur!', desc: 'Portakal sulu ve C vitamini içerir.' },
-      { emoji: '🍇', name: 'Üzüm', sound: 'Üzüm küçüktür!', desc: 'Üzüm salkım halinde yetişir.' },
-      { emoji: '🍓', name: 'Çilek', sound: 'Çilek kırmızıdır!', desc: 'Çilek küçük kırmızı ve tatlı bir meyvedir.' },
-      { emoji: '🍉', name: 'Karpuz', sound: 'Karpuz çok büyüktür!', desc: 'Karpuz yeşil dışı, kırmızı içi olan büyük bir meyvedir.' },
-      { emoji: '🍑', name: 'Şeftali', sound: 'Şeftali yumuşaktır!', desc: 'Şeftali tüylü kabuğu olan tatlı bir meyvedir.' },
-      { emoji: '🍐', name: 'Armut', sound: 'Armut yeşildir!', desc: 'Armut yeşil veya sarı renkli bir meyvedir.' },
-      { emoji: '🫐', name: 'Yaban Mersini', sound: 'Küçücük ve mavidir!', desc: 'Yaban mersini minik mavi bir meyvedir.' },
-      { emoji: '🥝', name: 'Kivi', sound: 'Kivi yeşildir!', desc: 'Kivi tüylü kabuğu olan yeşil bir meyvedir.' }
-    ]
-  },
-  {
-    id: 'vegetables',
-    name: 'Sebzeler',
-    emoji: '🥕',
-    color: '#2ED573',
-    items: [
-      { emoji: '🥕', name: 'Havuç', sound: 'Havuç turuncudur!', desc: 'Havuç turuncu renkli sağlıklı bir sebzedir.' },
-      { emoji: '🍅', name: 'Domates', sound: 'Domates kırmızıdır!', desc: 'Domates kırmızı yuvarlak bir sebzedir.' },
-      { emoji: '🥒', name: 'Salatalık', sound: 'Salatalık yeşildir!', desc: 'Salatalık yeşil ve sulu bir sebzedir.' },
-      { emoji: '🌽', name: 'Mısır', sound: 'Mısır sarıdır!', desc: 'Mısır sarı taneli bir sebzedir.' },
-      { emoji: '🥔', name: 'Patates', sound: 'Patates toprakta yetişir!', desc: 'Patates toprak altında yetişen bir sebzedir.' },
-      { emoji: '🧅', name: 'Soğan', sound: 'Soğan ağlatır!', desc: 'Soğan doğrarken gözleri yaşartır.' },
-      { emoji: '🥦', name: 'Brokoli', sound: 'Brokoli yeşildir!', desc: 'Brokoli ağaca benzeyen sağlıklı bir sebzedir.' },
-      { emoji: '🌶️', name: 'Biber', sound: 'Biber kırmızıdır!', desc: 'Biber kırmızı veya yeşil olabilir.' }
-    ]
-  },
-  {
-    id: 'objects',
-    name: 'Eşyalar',
-    emoji: '🪑',
-    color: '#5352ED',
-    items: [
-      { emoji: '🪑', name: 'Sandalye', sound: 'Sandalyeye oturulur!', desc: 'Sandalye oturmak için kullanılır.' },
-      { emoji: '🛏️', name: 'Yatak', sound: 'Yatakta uyuruz!', desc: 'Yatak uyumak için kullanılır.' },
-      { emoji: '📱', name: 'Telefon', sound: 'Telefon çalar!', desc: 'Telefon konuşmak için kullanılır.' },
-      { emoji: '📺', name: 'Televizyon', sound: 'Televizyonda çizgi film izleriz!', desc: 'Televizyon izlemek için bir ekrandır.' },
-      { emoji: '🪥', name: 'Diş Fırçası', sound: 'Dişlerimizi fırçalarız!', desc: 'Diş fırçası dişleri temizlemek içindir.' },
-      { emoji: '🧸', name: 'Oyuncak Ayı', sound: 'Oyuncak ayı yumuşacıktır!', desc: 'Oyuncak ayı sarılmak için çok güzeldir.' },
-      { emoji: '📖', name: 'Kitap', sound: 'Kitap okuruz!', desc: 'Kitap okuyarak yeni şeyler öğreniriz.' },
-      { emoji: '🖍️', name: 'Boya Kalemi', sound: 'Boya kalemiyle çizeriz!', desc: 'Boya kalemiyle güzel resimler çizeriz.' },
-      { emoji: '⏰', name: 'Saat', sound: 'Tik tak tik tak!', desc: 'Saat zamanı gösterir.' },
-      { emoji: '🔑', name: 'Anahtar', sound: 'Anahtar kapıyı açar!', desc: 'Anahtar kapıları açmak için kullanılır.' },
-      { emoji: '🎒', name: 'Çanta', sound: 'Çantaya eşyalarımızı koyarız!', desc: 'Çanta eşyaları taşımak için kullanılır.' },
-      { emoji: '👟', name: 'Ayakkabı', sound: 'Ayakkabımızı giyeriz!', desc: 'Ayakkabı ayaklarımızı korur.' }
-    ]
-  },
-  {
-    id: 'emotions',
-    name: 'Duygular',
-    emoji: '😊',
-    color: '#FFD93D',
-    items: [
-      { emoji: '😊', name: 'Mutlu', sound: 'Mutluyum! Yaşasın!', desc: 'Mutlu olduğumuzda gülümseriz.' },
-      { emoji: '😢', name: 'Üzgün', sound: 'Üzgünüm, ağlıyorum.', desc: 'Üzgün olduğumuzda ağlayabiliriz.' },
-      { emoji: '😠', name: 'Kızgın', sound: 'Çok kızgınım!', desc: 'Kızgın olduğumuzda yüzümüz kızarır.' },
-      { emoji: '😱', name: 'Korkmuş', sound: 'Çok korktum!', desc: 'Korktuğumuzda bağırırız veya saklanırız.' },
-      { emoji: '😮', name: 'Şaşkın', sound: 'Vaaay! Şaşırdım!', desc: 'Beklemediğimiz bir şey olduğunda şaşırırız.' },
-      { emoji: '🥰', name: 'Sevgi Dolu', sound: 'Seni çok seviyorum!', desc: 'Birini sevdiğimizde sarılırız.' },
-      { emoji: '😴', name: 'Uykulu', sound: 'Çok uykum var, haaaa!', desc: 'Uykumuz geldiğinde esneriz.' },
-      { emoji: '🤗', name: 'Heyecanlı', sound: 'Çok heyecanlıyım!', desc: 'Güzel bir şey olacağında heyecanlanırız.' }
-    ]
-  },
-  {
-    id: 'colors',
-    name: 'Renkler',
-    emoji: '🎨',
-    color: '#A29BFE',
-    items: [
-      { emoji: '🔴', name: 'Kırmızı', sound: 'Bu kırmızı renk!', desc: 'Kırmızı, elma ve domates rengidir.' },
-      { emoji: '🟠', name: 'Turuncu', sound: 'Bu turuncu renk!', desc: 'Turuncu, portakal ve havuç rengidir.' },
-      { emoji: '🟡', name: 'Sarı', sound: 'Bu sarı renk!', desc: 'Sarı, güneş ve muz rengidir.' },
-      { emoji: '🟢', name: 'Yeşil', sound: 'Bu yeşil renk!', desc: 'Yeşil, çimen ve ağaç rengidir.' },
-      { emoji: '🔵', name: 'Mavi', sound: 'Bu mavi renk!', desc: 'Mavi, gökyüzü ve deniz rengidir.' },
-      { emoji: '🟣', name: 'Mor', sound: 'Bu mor renk!', desc: 'Mor, patlıcan ve menekşe rengidir.' },
-      { emoji: '⚪', name: 'Beyaz', sound: 'Bu beyaz renk!', desc: 'Beyaz, kar ve süt rengidir.' },
-      { emoji: '⚫', name: 'Siyah', sound: 'Bu siyah renk!', desc: 'Siyah, gece rengidir.' },
-      { emoji: '🩷', name: 'Pembe', sound: 'Bu pembe renk!', desc: 'Pembe, çiçek ve flamingo rengidir.' },
-      { emoji: '🟤', name: 'Kahverengi', sound: 'Bu kahverengi!', desc: 'Kahverengi, toprak ve çikolata rengidir.' }
-    ]
-  },
-  {
-    id: 'numbers',
-    name: 'Sayılar',
-    emoji: '🔢',
-    color: '#00CEC9',
-    items: [
-      { emoji: '1️⃣', name: 'Bir', sound: 'Bir! Tek parmak!', desc: 'Bir, en küçük sayıdır. Bir parmağımızı kaldırırız.' },
-      { emoji: '2️⃣', name: 'İki', sound: 'İki! İki göz!', desc: 'İki gözümüz, iki kulağımız var.' },
-      { emoji: '3️⃣', name: 'Üç', sound: 'Üç! Üç elma!', desc: 'Üç, birden sonra iki, ikiden sonra üç gelir.' },
-      { emoji: '4️⃣', name: 'Dört', sound: 'Dört! Dört ayak!', desc: 'Kedinin dört ayağı vardır.' },
-      { emoji: '5️⃣', name: 'Beş', sound: 'Beş! Beş parmak!', desc: 'Bir elimizde beş parmak var.' },
-      { emoji: '6️⃣', name: 'Altı', sound: 'Altı!', desc: 'Beşten sonra altı gelir.' },
-      { emoji: '7️⃣', name: 'Yedi', sound: 'Yedi!', desc: 'Bir haftada yedi gün vardır.' },
-      { emoji: '8️⃣', name: 'Sekiz', sound: 'Sekiz!', desc: 'Ahtapotun sekiz kolu vardır.' },
-      { emoji: '9️⃣', name: 'Dokuz', sound: 'Dokuz!', desc: 'Sekizden sonra dokuz gelir.' },
-      { emoji: '🔟', name: 'On', sound: 'On! On parmak!', desc: 'İki elimizde toplam on parmak var.' }
-    ]
-  },
-  {
-    id: 'shapes',
-    name: 'Şekiller',
-    emoji: '⭐',
-    color: '#FDCB6E',
-    items: [
-      { emoji: '⭐', name: 'Yıldız', sound: 'Bu bir yıldız!', desc: 'Yıldız gökyüzünde parlar.' },
-      { emoji: '🔵', name: 'Daire', sound: 'Bu bir daire! Yuvarlak!', desc: 'Daire yuvarlak bir şekildir.' },
-      { emoji: '🟥', name: 'Kare', sound: 'Bu bir kare!', desc: 'Kare dört eşit kenarı olan bir şekildir.' },
-      { emoji: '🔺', name: 'Üçgen', sound: 'Bu bir üçgen!', desc: 'Üçgen üç köşesi olan bir şekildir.' },
-      { emoji: '💎', name: 'Elmas', sound: 'Bu bir elmas şekli!', desc: 'Elmas parlak ve değerli bir taştır.' },
-      { emoji: '❤️', name: 'Kalp', sound: 'Bu bir kalp!', desc: 'Kalp sevgiyi simgeler.' },
-      { emoji: '🌙', name: 'Hilal', sound: 'Bu bir hilal!', desc: 'Hilal ayın şeklidir.' }
-    ]
-  },
-  {
-    id: 'bodyparts',
-    name: 'Vücut',
-    emoji: '👋',
-    color: '#E17055',
-    items: [
-      { emoji: '👀', name: 'Göz', sound: 'Gözlerimizle görürüz!', desc: 'İki gözümüz var, onlarla her şeyi görürüz.' },
-      { emoji: '👃', name: 'Burun', sound: 'Burnumuzla koklarız!', desc: 'Burnumuzla güzel kokuları koklarız.' },
-      { emoji: '👄', name: 'Ağız', sound: 'Ağzımızla konuşuruz!', desc: 'Ağzımızla konuşur, yeriz ve güleriz.' },
-      { emoji: '👂', name: 'Kulak', sound: 'Kulaklarımızla duyarız!', desc: 'İki kulağımız var, sesleri duyarız.' },
-      { emoji: '🖐️', name: 'El', sound: 'Ellerimizle tutarız!', desc: 'Ellerimizle oyuncaklarımızı tutarız.' },
-      { emoji: '🦶', name: 'Ayak', sound: 'Ayaklarımızla yürürüz!', desc: 'İki ayağımız var, onlarla yürürüz.' },
-      { emoji: '🦷', name: 'Diş', sound: 'Dişlerimizle çiğneriz!', desc: 'Dişlerimizle yemekleri çiğneriz.' },
-      { emoji: '💪', name: 'Kol', sound: 'Kollarımız güçlü!', desc: 'Kollarımızla sarılır ve taşırız.' }
-    ]
-  },
-  {
-    id: 'vehicles',
-    name: 'Taşıtlar',
-    emoji: '🚗',
-    color: '#0984E3',
-    items: [
-      { emoji: '🚗', name: 'Araba', sound: 'Düüüt düüüt!', desc: 'Araba yolda gider, bizi taşır.' },
-      { emoji: '🚌', name: 'Otobüs', sound: 'Otobüs çok büyüktür!', desc: 'Otobüs birçok kişiyi taşır.' },
-      { emoji: '🚒', name: 'İtfaiye', sound: 'Viyuuu viyuuu!', desc: 'İtfaiye arabası yangın söndürür.' },
-      { emoji: '🚑', name: 'Ambulans', sound: 'Ambulans hasta taşır!', desc: 'Ambulans hastaları hastaneye götürür.' },
-      { emoji: '✈️', name: 'Uçak', sound: 'Uçak gökyüzünde uçar!', desc: 'Uçak gökyüzünde çok hızlı gider.' },
-      { emoji: '🚂', name: 'Tren', sound: 'Çuf çuf çuf!', desc: 'Tren rayların üzerinde gider.' },
-      { emoji: '🚢', name: 'Gemi', sound: 'Gemi denizde yüzer!', desc: 'Gemi çok büyüktür ve denizde gider.' },
-      { emoji: '🚲', name: 'Bisiklet', sound: 'Bisiklet sürmek eğlencelidir!', desc: 'Bisikletin iki tekerleği vardır.' },
-      { emoji: '🚁', name: 'Helikopter', sound: 'Helikopter havada durur!', desc: 'Helikopter pervanesiyle uçar.' },
-      { emoji: '🏍️', name: 'Motosiklet', sound: 'Vrrrmm!', desc: 'Motosiklet iki tekerlekli bir taşıttır.' }
-    ]
-  },
-  {
-    id: 'food',
-    name: 'Yiyecekler',
-    emoji: '🍞',
-    color: '#FDCB6E',
-    items: [
-      { emoji: '🍞', name: 'Ekmek', sound: 'Ekmek çok lezzetli!', desc: 'Ekmek her yemekte yenir.' },
-      { emoji: '🧀', name: 'Peynir', sound: 'Peynir sarıdır!', desc: 'Peynir sütten yapılır.' },
-      { emoji: '🥚', name: 'Yumurta', sound: 'Yumurta tavuktan çıkar!', desc: 'Yumurta kahvaltıda yenir.' },
-      { emoji: '🍕', name: 'Pizza', sound: 'Pizza çok lezzetli!', desc: 'Pizza üzerinde peynir olan bir yiyecektir.' },
-      { emoji: '🍰', name: 'Pasta', sound: 'Pasta tatlıdır!', desc: 'Doğum günlerinde pasta keseriz.' },
-      { emoji: '🍦', name: 'Dondurma', sound: 'Dondurma soğuktur!', desc: 'Dondurma yazın çok güzel olur.' },
-      { emoji: '🥛', name: 'Süt', sound: 'Süt beyazdır!', desc: 'Süt kemiklerimizi güçlendirir.' },
-      { emoji: '🍪', name: 'Kurabiye', sound: 'Kurabiye çıtır çıtır!', desc: 'Kurabiye çok tatlı bir atıştırmalıktır.' }
-    ]
-  },
-  {
-    id: 'nature',
-    name: 'Doğa',
-    emoji: '🌸',
-    color: '#00B894',
-    items: [
-      { emoji: '🌸', name: 'Çiçek', sound: 'Çiçek çok güzel kokar!', desc: 'Çiçekler rengarenk ve güzel kokulu olur.' },
-      { emoji: '🌳', name: 'Ağaç', sound: 'Ağaç çok büyüktür!', desc: 'Ağaç yeşil yaprakları olan büyük bir bitkidir.' },
-      { emoji: '☀️', name: 'Güneş', sound: 'Güneş parlıyor!', desc: 'Güneş bizi ısıtır ve aydınlatır.' },
-      { emoji: '🌧️', name: 'Yağmur', sound: 'Şıp şıp şıp!', desc: 'Yağmur bulutlardan düşen su damlalarıdır.' },
-      { emoji: '⛈️', name: 'Fırtına', sound: 'Güm güm güm!', desc: 'Fırtınada gök gürler ve şimşek çakar.' },
-      { emoji: '🌈', name: 'Gökkuşağı', sound: 'Gökkuşağı çok güzel!', desc: 'Gökkuşağında yedi renk vardır.' },
-      { emoji: '❄️', name: 'Kar', sound: 'Kar beyaz ve soğuktur!', desc: 'Kar kışın yağar, kardan adam yaparız.' },
-      { emoji: '🌙', name: 'Ay', sound: 'Ay geceleri parlar!', desc: 'Ay geceleri gökyüzünde parıldar.' },
-      { emoji: '⭐', name: 'Yıldız', sound: 'Yıldızlar pırıl pırıl!', desc: 'Yıldızlar geceleri gökyüzünde parlar.' },
-      { emoji: '🌊', name: 'Deniz', sound: 'Deniz çok büyüktür!', desc: 'Deniz mavi ve çok geniştir, dalgaları vardır.' }
-    ]
-  },
-  {
-    id: 'family',
-    name: 'Aile',
-    emoji: '👨‍👩‍👧',
-    color: '#E84393',
-    items: [
-      { emoji: '👩', name: 'Anne', sound: 'Anne bizi çok sever!', desc: 'Anne bize bakar ve bizi çok sever.' },
-      { emoji: '👨', name: 'Baba', sound: 'Baba bizi korur!', desc: 'Baba bizimle oynar ve bizi korur.' },
-      { emoji: '👶', name: 'Bebek', sound: 'Bebek çok küçüktür!', desc: 'Bebek çok küçük ve tatlıdır.' },
-      { emoji: '👧', name: 'Kız Çocuk', sound: 'Merhaba!', desc: 'Kız çocuk oyun oynar ve öğrenir.' },
-      { emoji: '👦', name: 'Erkek Çocuk', sound: 'Merhaba!', desc: 'Erkek çocuk oyun oynar ve öğrenir.' },
-      { emoji: '👵', name: 'Büyükanne', sound: 'Büyükanne masal anlatır!', desc: 'Büyükanne bize güzel masallar anlatır.' },
-      { emoji: '👴', name: 'Büyükbaba', sound: 'Büyükbaba bize hikaye anlatır!', desc: 'Büyükbaba bizi çok sever.' },
-      { emoji: '👨‍👩‍👧', name: 'Aile', sound: 'Aile birlikte mutludur!', desc: 'Aile birlikte yaşar ve birbirini sever.' }
-    ]
-  },
-  {
-    id: 'clothes',
-    name: 'Giysiler',
-    emoji: '👕',
-    color: '#74B9FF',
-    items: [
-      { emoji: '👕', name: 'Tişört', sound: 'Tişört giyeriz!', desc: 'Tişört üstümüze giydiğimiz bir kıyafettir.' },
-      { emoji: '👗', name: 'Elbise', sound: 'Elbise çok güzel!', desc: 'Elbise tek parça bir kıyafettir.' },
-      { emoji: '👖', name: 'Pantolon', sound: 'Pantolon giyeriz!', desc: 'Pantolon bacaklarımıza giyeriz.' },
-      { emoji: '🧣', name: 'Atkı', sound: 'Atkı boynumuzu ısıtır!', desc: 'Soğuk havalarda atkı takarız.' },
-      { emoji: '🧤', name: 'Eldiven', sound: 'Eldiven ellerimizi ısıtır!', desc: 'Kışın eldiven giyeriz.' },
-      { emoji: '👒', name: 'Şapka', sound: 'Şapka başımızı korur!', desc: 'Güneşte şapka takarız.' },
-      { emoji: '🧦', name: 'Çorap', sound: 'Çorap ayaklarımızı ısıtır!', desc: 'Çorap ayaklarımıza giyeriz.' },
-      { emoji: '🧥', name: 'Mont', sound: 'Mont bizi ısıtır!', desc: 'Soğuk havalarda mont giyeriz.' }
-    ]
-  },
-  {
-    id: 'actions',
-    name: 'Hareketler',
-    emoji: '🏃',
-    color: '#6C5CE7',
-    items: [
-      { emoji: '🏃', name: 'Koşmak', sound: 'Koşuyorum! Hızlı hızlı!', desc: 'Koşmak çok eğlencelidir ve bizi güçlendirir.' },
-      { emoji: '🤸', name: 'Zıplamak', sound: 'Zıp zıp zıp!', desc: 'Zıplamak çok eğlencelidir.' },
-      { emoji: '👏', name: 'Alkışlamak', sound: 'Şak şak şak!', desc: 'Mutlu olduğumuzda alkışlarız.' },
-      { emoji: '🙌', name: 'El Sallamak', sound: 'Merhaba! Güle güle!', desc: 'Birini gördüğümüzde el sallarız.' },
-      { emoji: '💃', name: 'Dans Etmek', sound: 'Dans ediyorum!', desc: 'Müzik duyunca dans ederiz.' },
-      { emoji: '🧹', name: 'Temizlemek', sound: 'Temizlik yapalım!', desc: 'Odamızı temiz tutmalıyız.' },
-      { emoji: '🖐️', name: 'Dokunmak', sound: 'Dokunuyorum!', desc: 'Ellerimizle eşyalara dokunuruz.' },
-      { emoji: '😊', name: 'Gülümsemek', sound: 'Gülümsüyorum!', desc: 'Mutlu olduğumuzda gülümseriz.' }
-    ]
-  },
-  {
-    id: 'sounds',
-    name: 'Sesler',
-    emoji: '🔔',
-    color: '#FF7675',
-    items: [
-      { emoji: '🔔', name: 'Zil Sesi', sound: 'Çın çın çın!', desc: 'Zil çaldığında çın çın diye ses çıkar.' },
-      { emoji: '🎵', name: 'Müzik', sound: 'La la la!', desc: 'Müzik dinlemek çok güzeldir.' },
-      { emoji: '👏', name: 'Alkış', sound: 'Şak şak şak!', desc: 'Alkış sesi elleri birbirine vurunca çıkar.' },
-      { emoji: '💨', name: 'Rüzgar', sound: 'Vıyyy!', desc: 'Rüzgar estiğinde vıy diye ses çıkar.' },
-      { emoji: '🐓', name: 'Horoz', sound: 'Ü-ürü-üüü!', desc: 'Horoz sabahları öter.' },
-      { emoji: '🚗', name: 'Korna', sound: 'Düüüt düüüt!', desc: 'Araba kornası düüt diye çalar.' },
-      { emoji: '⏰', name: 'Çalar Saat', sound: 'Drrr drrr drrr!', desc: 'Çalar saat bizi uyandırır.' },
-      { emoji: '🌊', name: 'Dalga', sound: 'Şarıl şarıl!', desc: 'Deniz dalgaları şarıl şarıl ses çıkarır.' }
-    ]
-  },
-  {
-    id: 'greetings',
-    name: 'İfadeler',
-    emoji: '💬',
-    color: '#00CEC9',
-    items: [
-      { emoji: '👋', name: 'Merhaba', sound: 'Merhaba! Nasılsın?', desc: 'Birini gördüğümüzde merhaba deriz.' },
-      { emoji: '🤝', name: 'Güle Güle', sound: 'Güle güle! Görüşürüz!', desc: 'Birinden ayrılırken güle güle deriz.' },
-      { emoji: '🙏', name: 'Lütfen', sound: 'Lütfen! Rica ederim!', desc: 'Bir şey isterken lütfen deriz.' },
-      { emoji: '💝', name: 'Teşekkürler', sound: 'Teşekkür ederim!', desc: 'Bize bir şey yapıldığında teşekkür ederiz.' },
-      { emoji: '😊', name: 'Affedersiniz', sound: 'Affedersiniz, özür dilerim!', desc: 'Hata yaptığımızda özür dileriz.' },
-      { emoji: '❤️', name: 'Seni Seviyorum', sound: 'Seni çok seviyorum!', desc: 'Sevdiklerimize seni seviyorum deriz.' },
-      { emoji: '🌙', name: 'İyi Geceler', sound: 'İyi geceler, tatlı rüyalar!', desc: 'Yatmadan önce iyi geceler deriz.' },
-      { emoji: '☀️', name: 'Günaydın', sound: 'Günaydın! Güzel bir gün!', desc: 'Sabah kalktığımızda günaydın deriz.' }
-    ]
-  }
-];
-
-// ===== GAMES DATA =====
-const games = [
-  { id: 'find', name: 'Bunu Bul!', emoji: '🔍', desc: 'Sorulan resmi bul', badge: 'Kolay', minAge: 24 },
-  { id: 'sound', name: 'Ses Eşleştir', emoji: '🔊', desc: 'Sesi olan hayvanı bul', badge: 'Kolay', minAge: 24 },
-  { id: 'color', name: 'Renk Eşleştir', emoji: '🎨', desc: 'Doğru rengi seç', badge: 'Orta', minAge: 24 },
-  { id: 'count', name: 'Sayalım!', emoji: '🔢', desc: 'Kaç tane var say', badge: 'Orta', minAge: 30 },
-  { id: 'memory', name: 'Hafıza Oyunu', emoji: '🧠', desc: 'Eşlerini bul', badge: 'Zor', minAge: 30 },
-  { id: 'category', name: 'Nereye Ait?', emoji: '📦', desc: 'Doğru gruba koy', badge: 'Orta', minAge: 24 },
-  { id: 'shadow', name: 'Gölge Eşleştir', emoji: '👤', desc: 'Gölgesini bul', badge: 'Orta', minAge: 28 },
-  { id: 'emotion', name: 'Nasıl Hissediyor?', emoji: '😊', desc: 'Duyguyu tahmin et', badge: 'Kolay', minAge: 24 },
-  { id: 'size', name: 'Büyük-Küçük', emoji: '📏', desc: 'Büyük veya küçük olanı seç', badge: 'Kolay', minAge: 24 },
-  { id: 'puzzle', name: 'Eksik Ne?', emoji: '🧩', desc: 'Eksik olanı tamamla', badge: 'Zor', minAge: 30 }
-];
-
-// ===== TROPHIES =====
-const trophyList = [
-  { id: 'first_word', emoji: '🏅', name: 'İlk Kelime', condition: d => d.wordsLearned.length >= 1 },
-  { id: 'ten_words', emoji: '🥉', name: '10 Kelime', condition: d => d.wordsLearned.length >= 10 },
-  { id: 'fifty_words', emoji: '🥈', name: '50 Kelime', condition: d => d.wordsLearned.length >= 50 },
-  { id: 'hundred_words', emoji: '🥇', name: '100 Kelime', condition: d => d.wordsLearned.length >= 100 },
-  { id: 'all_words', emoji: '👑', name: 'Tüm Kelimeler', condition: d => d.wordsLearned.length >= getAllItems().length },
-  { id: 'first_game', emoji: '🎮', name: 'İlk Oyun', condition: d => d.gamesPlayed >= 1 },
-  { id: 'ten_games', emoji: '🕹️', name: '10 Oyun', condition: d => d.gamesPlayed >= 10 },
-  { id: 'three_days', emoji: '📅', name: '3 Gün Serisi', condition: d => d.dailyStreak >= 3 },
-  { id: 'seven_days', emoji: '🔥', name: '7 Gün Serisi', condition: d => d.dailyStreak >= 7 },
-  { id: 'explorer', emoji: '🗺️', name: 'Kaşif', condition: d => Object.keys(d.categoryViews).length >= 5 },
-  { id: 'master_explorer', emoji: '🌍', name: 'Süper Kaşif', condition: d => Object.keys(d.categoryViews).length >= categories.length },
-  { id: 'time_10', emoji: '⏱️', name: '10 Dakika', condition: d => d.totalTime >= 600 },
-  { id: 'time_60', emoji: '⏰', name: '1 Saat', condition: d => d.totalTime >= 3600 },
-  { id: 'time_300', emoji: '🏆', name: '5 Saat', condition: d => d.totalTime >= 18000 },
-  { id: 'perfect_game', emoji: '💯', name: 'Mükemmel Oyun', condition: d => Object.values(d.gameScores).some(s => s >= 100) },
-  { id: 'all_categories', emoji: '📚', name: 'Her Kategori', condition: d => Object.keys(d.categoryViews).length >= categories.length }
-];
-
-// ===== MILESTONES =====
-const milestones = [
-  { text: 'İlk kelimeyi öğren', check: d => d.wordsLearned.length >= 1 },
-  { text: '5 farklı kelime öğren', check: d => d.wordsLearned.length >= 5 },
-  { text: 'Tüm renkleri öğren', check: d => { const c = categories.find(x=>x.id==='colors'); return c && c.items.every(i=>d.wordsLearned.includes(i.name)); }},
-  { text: 'İlk oyunu oyna', check: d => d.gamesPlayed >= 1 },
-  { text: '3 gün üst üste kullan', check: d => d.dailyStreak >= 3 },
-  { text: '5 farklı kategoriyi incele', check: d => Object.keys(d.categoryViews).length >= 5 },
-  { text: '50 kelime öğren', check: d => d.wordsLearned.length >= 50 },
-  { text: 'Tüm kategorileri aç', check: d => Object.keys(d.categoryViews).length >= categories.length },
-  { text: '10 oyun oyna', check: d => d.gamesPlayed >= 10 },
-  { text: '100 kelime öğren', check: d => d.wordsLearned.length >= 100 }
-];
-
-// ===== DAILY TIPS =====
-const tips = [
-  '<strong>Günün İpucu:</strong> Çocuğunuzla resimler hakkında konuşurken kısa ve net cümleler kullanın. "Bak, bu bir kedi. Kedi miyav der!" gibi açıklamalar yapın.',
-  '<strong>Gelişim Notu:</strong> 24-36 ay arası çocuklar günde ortalama 2-3 yeni kelime öğrenebilir. Tekrar, öğrenmenin anahtarıdır!',
-  '<strong>Aktivite Önerisi:</strong> Bugün hayvanlar kategorisini açın ve her hayvanın sesini birlikte taklit edin. Bu, ses gelişimini destekler.',
-  '<strong>Hatırlatma:</strong> Ekran süresi 24-36 ay arası çocuklar için günde 15-20 dakikayı geçmemelidir. Kaliteli etkileşim çok daha önemlidir.',
-  '<strong>Oyun Zamanı:</strong> Bunu Bul oyununu oynayarak çocuğunuzun dikkat ve algı becerilerini güçlendirin.',
-  '<strong>Dil Gelişimi:</strong> Çocuğunuz bir resmi gösterdiğinde, onu genişletilmiş cümlelerle destekleyin. "Evet, bu bir köpek! Büyük, beyaz bir köpek!"',
-  '<strong>Duygusal Gelişim:</strong> Duygular kategorisini kullanarak çocuğunuzun kendi duygularını tanımasına yardımcı olun.',
-  '<strong>Motor Gelişim:</strong> Tablet kullanırken parmak becerisi gelişir. Dokunma ve kaydırma hareketleri ince motor gelişimi destekler.',
-  '<strong>Bilişsel Gelişim:</strong> Renk ve şekil eşleştirme oyunları, çocuğunuzun sınıflandırma becerilerini geliştirir.',
-  '<strong>Sosyal Gelişim:</strong> Aile kategorisini birlikte inceleyerek aile bireyleri hakkında konuşun. Bu, aidiyet duygusunu güçlendirir.'
-];
-
-// ===== APP STATE =====
-let currentPage = 'home';
-let currentCategory = null;
-let currentItemIndex = 0;
-let currentView = 'grid';
-let sessionTimer = 0;
-let timerInterval = null;
-let currentGame = null;
-let gameScore = 0;
-let gameQuestionIndex = 0;
-let gameQuestions = [];
-let memoryCards = [];
-let memoryFlipped = [];
-let memoryMatched = [];
-let zoomLevel = appData.zoom || 1;
-
-// ===== SPEECH =====
-function speak(text) {
-  if (!appData.soundEnabled) return;
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'tr-TR';
-    u.rate = 0.8;
-    u.pitch = 1.1;
-    u.volume = 1;
-    // Try to find Turkish voice
-    const voices = window.speechSynthesis.getVoices();
-    const trVoice = voices.find(v => v.lang.startsWith('tr'));
-    if (trVoice) u.voice = trVoice;
-    window.speechSynthesis.speak(u);
-  }
-}
-
-function playClickSound() {
-  speak('Merhaba Mihra!');
-}
-
-// ===== TIMER =====
-function startTimer() {
-  sessionTimer = 0;
-  if (timerInterval) clearInterval(timerInterval);
-  timerInterval = setInterval(() => {
-    sessionTimer++;
-    appData.totalTime++;
-    if (sessionTimer % 30 === 0) saveData(appData);
-    updateTimerDisplay();
-  }, 1000);
-}
-
-function updateTimerDisplay() {
-  const m = Math.floor(sessionTimer / 60).toString().padStart(2, '0');
-  const s = (sessionTimer % 60).toString().padStart(2, '0');
-  document.getElementById('timerDisplay').textContent = `${m}:${s}`;
-  
-  // Warning colors based on time
-  const el = document.getElementById('timerDisplay');
-  if (sessionTimer > 1200) { // 20 min
-    el.style.background = 'linear-gradient(135deg, #D63031, #FF7675)';
-  } else if (sessionTimer > 900) { // 15 min
-    el.style.background = 'linear-gradient(135deg, #E17055, #FDCB6E)';
-  }
-}
-
-// ===== SPLASH SCREEN =====
-function initSplash() {
-  let progress = 0;
-  const loader = document.getElementById('splashLoader');
-  const interval = setInterval(() => {
-    progress += Math.random() * 15 + 5;
-    if (progress > 100) progress = 100;
-    loader.style.width = progress + '%';
-    if (progress >= 100) {
-      clearInterval(interval);
-      setTimeout(() => {
-        document.getElementById('splashScreen').classList.add('hide');
-        setTimeout(() => {
-          document.getElementById('splashScreen').style.display = 'none';
-          showApp();
-        }, 800);
-      }, 500);
-    }
-  }, 200);
-}
-
-function showApp() {
-  document.getElementById('topBar').style.display = 'flex';
-  document.getElementById('mainContent').style.display = 'block';
-  document.getElementById('bottomNav').style.display = 'flex';
-  document.getElementById('zoomControls').style.display = 'flex';
-  
-  startTimer();
-  recordSession();
-  updateStreak();
-  renderHome();
-  applyZoom();
-  applyTheme(appData.theme);
-  checkLastPosition();
-  
-  // Load voices
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.getVoices();
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-  }
-}
-
-// ===== SESSION TRACKING =====
-function recordSession() {
-  const now = new Date();
-  appData.sessions.push({
-    date: now.toISOString(),
-    timestamp: Date.now(),
-    day: now.toLocaleDateString('tr-TR'),
-    hour: now.getHours()
-  });
-  
-  appData.activityLog.unshift({
-    time: now.toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'}),
-    text: 'Uygulama açıldı',
-    icon: '🚀',
-    date: now.toLocaleDateString('tr-TR')
-  });
-  
-  // Keep last 200 log entries
-  if (appData.activityLog.length > 200) appData.activityLog = appData.activityLog.slice(0, 200);
-  
-  saveData(appData);
-}
-
-function updateStreak() {
-  const today = new Date().toLocaleDateString('tr-TR');
-  const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('tr-TR');
-  
-  if (appData.lastActiveDate === today) return;
-  
-  if (appData.lastActiveDate === yesterday) {
-    appData.dailyStreak++;
-  } else if (appData.lastActiveDate !== today) {
-    appData.dailyStreak = 1;
-  }
-  
-  appData.lastActiveDate = today;
-  saveData(appData);
-}
-
-function checkLastPosition() {
-  if (appData.lastCategory) {
-    document.getElementById('continueSection').style.display = 'flex';
-    const cat = categories.find(c => c.id === appData.lastCategory);
-    if (cat) {
-      document.getElementById('continueIcon').textContent = cat.emoji;
-      document.getElementById('continueTitle').textContent = 'Kaldığın yerden devam et';
-      document.getElementById('continueDesc').textContent = `${cat.name} - ${appData.lastItemIndex + 1}. öğe`;
-    }
-  }
-}
-
-function continueLearning() {
-  if (appData.lastCategory) {
-    openCategory(appData.lastCategory);
-    if (appData.lastView === 'single') {
-      setView('single');
-      currentItemIndex = appData.lastItemIndex || 0;
-      renderSingleCard();
-    }
-  }
-}
-
-// ===== NAVIGATION =====
-function navigate(page) {
-  currentPage = page;
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  
-  const pageMap = {
-    'home': 'pageHome',
-    'games': 'pageGames',
-    'stats': 'pageStats',
-    'settings': 'pageSettings'
-  };
-  
-  document.getElementById(pageMap[page]).classList.add('active');
-  document.querySelectorAll('.nav-item')[
-    ['home','games','stats','settings'].indexOf(page)
-  ].classList.add('active');
-  
-  if (page === 'home') renderHome();
-  else if (page === 'games') renderGames();
-  else if (page === 'stats') renderStats();
-  else if (page === 'settings') renderSettings();
-  
-  window.scrollTo(0, 0);
-}
-
-function goHome() {
-  document.getElementById('pageLearn').classList.remove('active');
-  document.getElementById('pageHome').classList.add('active');
-  currentCategory = null;
-  navigate('home');
-}
-
-// ===== RENDER HOME =====
-function renderHome() {
-  // Update welcome stats
-  document.getElementById('homeWordsLearned').textContent = appData.wordsLearned.length;
-  document.getElementById('homeGamesPlayed').textContent = appData.gamesPlayed;
-  document.getElementById('homeDaysStreak').textContent = appData.dailyStreak;
-  
-  // Daily tip
-  const tipIndex = new Date().getDate() % tips.length;
-  document.getElementById('dailyTipText').innerHTML = tips[tipIndex];
-  
-  // Categories grid
-  const grid = document.getElementById('categoryGrid');
-  grid.innerHTML = categories.map(cat => {
-    const viewed = appData.categoryViews[cat.id] || 0;
-    const learnedInCat = cat.items.filter(i => appData.wordsLearned.includes(i.name)).length;
-    const progress = Math.round((learnedInCat / cat.items.length) * 100);
-    return `
-      <div class="category-card" onclick="openCategory('${cat.id}')">
-        <span class="cat-emoji">${cat.emoji}</span>
-        <div class="cat-name">${cat.name}</div>
-        <div class="cat-count">${cat.items.length} öğe</div>
-        <div class="cat-progress">
-          <div class="cat-progress-bar" style="width:${progress}%"></div>
-        </div>
-      </div>
-    `;
-  }).join('');
-  
-  // Home games grid (show first 4)
-  const homeGames = document.getElementById('homeGamesGrid');
-  homeGames.innerHTML = games.slice(0, 4).map(g => `
-    <div class="game-card" onclick="startGame('${g.id}')">
-      <div class="game-badge">${g.badge}</div>
-      <span class="game-emoji">${g.emoji}</span>
-      <div class="game-name">${g.name}</div>
-      <div class="game-desc">${g.desc}</div>
-    </div>
-  `).join('');
-  
-  // Milestones
-  const mc = document.getElementById('milestoneCard');
-  mc.innerHTML = milestones.map(m => {
-    const done = m.check(appData);
-    return `
-      <div class="milestone-item">
-        <div class="milestone-check ${done ? 'done' : ''}">
-          ${done ? '✓' : '○'}
-        </div>
-        <div class="milestone-text ${done ? 'done' : ''}">${m.text}</div>
-      </div>
-    `;
-  }).join('');
-  
-  // Trophies
-  const tg = document.getElementById('trophyGrid');
-  tg.innerHTML = trophyList.map(t => {
-    const earned = t.condition(appData);
-    return `
-      <div class="trophy-item ${earned ? 'earned' : 'locked'}">
-        <span class="trophy-emoji">${t.emoji}</span>
-        <div class="trophy-name">${t.name}</div>
-      </div>
-    `;
-  }).join('');
-  
-  checkLastPosition();
-}
-
-// ===== OPEN CATEGORY =====
-function openCategory(catId) {
-  currentCategory = categories.find(c => c.id === catId);
-  if (!currentCategory) return;
-  
-  currentItemIndex = 0;
-  appData.lastCategory = catId;
-  appData.categoryViews[catId] = (appData.categoryViews[catId] || 0) + 1;
-  
-  logActivity(`${currentCategory.emoji} ${currentCategory.name} açıldı`);
-  saveData(appData);
-  
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('pageLearn').classList.add('active');
-  document.getElementById('learnTitle').textContent = currentCategory.name;
-  
-  currentView = appData.lastView || 'grid';
-  setView(currentView);
-  
-  checkTrophies();
-}
-
-// ===== VIEW MODES =====
-function setView(view) {
-  currentView = view;
-  appData.lastView = view;
-  saveData(appData);
-  
-  document.getElementById('gridViewBtn').classList.toggle('active', view === 'grid');
-  document.getElementById('singleViewBtn').classList.toggle('active', view === 'single');
-  
-  if (view === 'grid') renderGridView();
-  else renderSingleCard();
-}
-
-function renderGridView() {
-  if (!currentCategory) return;
-  const content = document.getElementById('learnContent');
-  content.innerHTML = `
-    <div class="items-grid">
-      ${currentCategory.items.map((item, idx) => `
-        <div class="item-card" onclick="onItemClick(${idx})">
-          <div class="item-visual">
-            ${item.emoji}
-            <div class="sound-indicator">🔊</div>
-          </div>
-          <div class="item-label">${item.name}</div>
-          <div class="item-label-sub">${item.desc.substring(0, 30)}...</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-function onItemClick(idx) {
-  currentItemIndex = idx;
-  const item = currentCategory.items[idx];
-  speak(item.name + '. ' + item.sound);
-  learnWord(item.name);
-  
-  appData.lastItemIndex = idx;
-  appData.itemViews[item.name] = (appData.itemViews[item.name] || 0) + 1;
-  logActivity(`"${item.name}" öğrenildi`);
-  saveData(appData);
-  
-  // If in grid view, optionally switch to single for detail
-  if (currentView === 'grid') {
-    setView('single');
-  }
-}
-
-function renderSingleCard() {
-  if (!currentCategory) return;
-  const item = currentCategory.items[currentItemIndex];
-  const content = document.getElementById('learnContent');
-  
-  content.innerHTML = `
-    <div class="single-card-view">
-      <div class="card-counter">${currentItemIndex + 1} / ${currentCategory.items.length}</div>
-      <div class="single-card">
-        <div class="single-visual">${item.emoji}</div>
-        <div class="single-info">
-          <div class="single-name">${item.name}</div>
-          <div class="single-desc">${item.desc}</div>
-        </div>
-      </div>
-      <div class="single-nav">
-        <button onclick="prevCard()" ${currentItemIndex === 0 ? 'style="opacity:0.3"' : ''}>◀</button>
-        <button class="speak-btn" onclick="speakCurrentItem()">🔊</button>
-        <button onclick="nextCard()" ${currentItemIndex === currentCategory.items.length - 1 ? 'style="opacity:0.3"' : ''}>▶</button>
-      </div>
-    </div>
-  `;
-  
-  learnWord(item.name);
-  appData.lastItemIndex = currentItemIndex;
-  saveData(appData);
-}
-
-function prevCard() {
-  if (currentItemIndex > 0) {
-    currentItemIndex--;
-    renderSingleCard();
-    speakCurrentItem();
-  }
-}
-
-function nextCard() {
-  if (currentItemIndex < currentCategory.items.length - 1) {
-    currentItemIndex++;
-    renderSingleCard();
-    speakCurrentItem();
-  }
-}
-
-function speakCurrentItem() {
-  if (!currentCategory) return;
-  const item = currentCategory.items[currentItemIndex];
-  speak(item.name + '. ' + item.sound);
-}
-
-function learnWord(word) {
-  if (!appData.wordsLearned.includes(word)) {
-    appData.wordsLearned.push(word);
-    saveData(appData);
-    checkTrophies();
-    
-    // Achievement milestones
-    const wl = appData.wordsLearned.length;
-    if (wl === 1) showAchievement('🏅', 'İlk Kelime!', `"${word}" kelimesini öğrendin!`);
-    else if (wl === 10) showAchievement('🌟', '10 Kelime!', 'Harika! 10 kelime öğrendin!');
-    else if (wl === 25) showAchievement('🎉', '25 Kelime!', 'Süper! 25 kelimeyi geçtin!');
-    else if (wl === 50) showAchievement('🏆', '50 Kelime!', 'İnanılmaz! 50 kelime öğrendin!');
-    else if (wl === 100) showAchievement('👑', '100 Kelime!', 'Muhteşem! 100 kelime öğrendin!');
-  }
-}
-
-// ===== GAMES =====
-function renderGames() {
-  const gGrid = document.getElementById('gamesGrid');
-  const playArea = document.getElementById('gamePlayArea');
-  
-  gGrid.style.display = 'grid';
-  playArea.style.display = 'none';
-  
-  gGrid.innerHTML = games.map(g => `
-    <div class="game-card" onclick="startGame('${g.id}')">
-      <div class="game-badge">${g.badge}</div>
-      <span class="game-emoji">${g.emoji}</span>
-      <div class="game-name">${g.name}</div>
-      <div class="game-desc">${g.desc}</div>
-    </div>
-  `).join('');
-}
-
-function startGame(gameId) {
-  currentGame = gameId;
-  gameScore = 0;
-  gameQuestionIndex = 0;
-  
-  document.getElementById('gamesGrid').style.display = 'none';
-  document.getElementById('gamePlayArea').style.display = 'block';
-  
-  appData.gamesPlayed++;
-  logActivity(`🎮 "${games.find(g=>g.id===gameId).name}" oyunu başladı`);
-  saveData(appData);
-  
-  if (gameId === 'memory') initMemoryGame();
-  else generateGameQuestion();
-}
-
-function getAllItems() {
-  return categories.flatMap(c => c.items);
-}
-
-function getRandomItems(exclude, count) {
-  const all = getAllItems().filter(i => i.name !== exclude);
-  const shuffled = all.sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
-
-function generateGameQuestion() {
-  const allItems = getAllItems();
-  const correct = allItems[Math.floor(Math.random() * allItems.length)];
-  const wrongs = getRandomItems(correct.name, 3);
-  
-  const options = [correct, ...wrongs].sort(() => Math.random() - 0.5);
-  let questionHTML = '';
-  
-  switch(currentGame) {
-    case 'find':
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">Bu hangisi?</div>
-          <div class="game-question-emoji">${correct.emoji}</div>
-          <div class="game-options">
-            ${options.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${correct.name}', this)">
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak('Bu hangisi? ' + correct.name + ' nerede?');
-      break;
-      
-    case 'sound':
-      const animals = categories.find(c => c.id === 'pets').items.concat(
-        categories.find(c => c.id === 'wild').items
-      );
-      const animal = animals[Math.floor(Math.random() * animals.length)];
-      const wrongAnimals = animals.filter(a => a.name !== animal.name).sort(() => Math.random() - 0.5).slice(0, 3);
-      const animalOptions = [animal, ...wrongAnimals].sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">"${animal.sound}" diyen hayvan hangisi?</div>
-          <div class="game-options">
-            ${animalOptions.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${animal.name}', this)">
-                ${o.emoji}
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak(animal.sound + ' diyen hayvan hangisi?');
-      break;
-      
-    case 'color':
-      const colors = categories.find(c => c.id === 'colors').items;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const wrongColors = colors.filter(c => c.name !== color.name).sort(() => Math.random() - 0.5).slice(0, 3);
-      const colorOptions = [color, ...wrongColors].sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">${color.name} renk hangisi?</div>
-          <div class="game-options">
-            ${colorOptions.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${color.name}', this)">
-                ${o.emoji}
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak(color.name + ' renk hangisi?');
-      break;
-      
-    case 'count':
-      const countNum = Math.floor(Math.random() * 5) + 1;
-      const countEmoji = ['🍎','🌟','🐱','🎈','🍌','🐶'][Math.floor(Math.random() * 6)];
-      const emojiStr = countEmoji.repeat(countNum);
-      const countOptions = [];
-      countOptions.push(countNum);
-      while (countOptions.length < 4) {
-        const r = Math.floor(Math.random() * 5) + 1;
-        if (!countOptions.includes(r)) countOptions.push(r);
-      }
-      countOptions.sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">Kaç tane var?</div>
-          <div class="game-question-emoji" style="font-size:48px;letter-spacing:8px;">${emojiStr}</div>
-          <div class="game-options">
-            ${countOptions.map(n => `
-              <div class="game-option" onclick="checkAnswer('${n}', '${countNum}', this)">
-                <span style="font-size:28px;font-weight:800;">${n}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak('Kaç tane var? Say bakalım!');
-      break;
-      
-    case 'category':
-      const cat1 = categories[Math.floor(Math.random() * categories.length)];
-      const item1 = cat1.items[Math.floor(Math.random() * cat1.items.length)];
-      const otherCats = categories.filter(c => c.id !== cat1.id).sort(() => Math.random() - 0.5).slice(0, 3);
-      const catOptions = [cat1, ...otherCats].sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">${item1.emoji} ${item1.name} hangi gruba ait?</div>
-          <div class="game-options">
-            ${catOptions.map(c => `
-              <div class="game-option" onclick="checkAnswer('${c.id}', '${cat1.id}', this)">
-                ${c.emoji}
-                <span>${c.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak(item1.name + ' hangi gruba ait?');
-      break;
-      
-    case 'shadow':
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">Bunun gölgesi hangisi?</div>
-          <div class="game-question-emoji">${correct.emoji}</div>
-          <div class="game-options">
-            ${options.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${correct.name}', this)" style="filter:brightness(0);opacity:0.7;">
-                ${o.emoji}
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak('Bunun gölgesi hangisi?');
-      break;
-      
-    case 'emotion':
-      const emotions = categories.find(c => c.id === 'emotions').items;
-      const emotion = emotions[Math.floor(Math.random() * emotions.length)];
-      const wrongEmotions = emotions.filter(e => e.name !== emotion.name).sort(() => Math.random() - 0.5).slice(0, 3);
-      const emotionOptions = [emotion, ...wrongEmotions].sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">Bu yüz nasıl hissediyor?</div>
-          <div class="game-question-emoji">${emotion.emoji}</div>
-          <div class="game-options">
-            ${emotionOptions.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${emotion.name}', this)">
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak('Bu yüz nasıl hissediyor?');
-      break;
-      
-    case 'size':
-      const sizeItems = getAllItems().sort(() => Math.random() - 0.5).slice(0, 2);
-      const bigger = Math.random() > 0.5 ? 'büyük' : 'küçük';
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">${bigger === 'büyük' ? 'Büyük' : 'Küçük'} olanı göster!</div>
-          <div class="game-options">
-            <div class="game-option" onclick="checkAnswer('big', '${bigger === 'büyük' ? 'big' : 'small'}', this)" style="font-size:56px;">
-              ${sizeItems[0].emoji}
-              <span>Büyük</span>
-            </div>
-            <div class="game-option" onclick="checkAnswer('small', '${bigger === 'büyük' ? 'big' : 'small'}', this)" style="font-size:28px;">
-              ${sizeItems[1].emoji}
-              <span>Küçük</span>
-            </div>
-          </div>
-        </div>
-      `;
-      speak(bigger + ' olanı göster!');
-      break;
-      
-    case 'puzzle':
-      const puzzleCat = categories[Math.floor(Math.random() * categories.length)];
-      const shown = puzzleCat.items.sort(() => Math.random() - 0.5).slice(0, 3);
-      const missing = puzzleCat.items.filter(i => !shown.includes(i)).sort(() => Math.random() - 0.5)[0] || puzzleCat.items[0];
-      const puzzleWrongs = getAllItems().filter(i => i.name !== missing.name && !shown.find(s => s.name === i.name)).sort(() => Math.random() - 0.5).slice(0, 3);
-      const puzzleOptions = [missing, ...puzzleWrongs].sort(() => Math.random() - 0.5);
-      
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">${puzzleCat.name} grubundan eksik olan hangisi?</div>
-          <div style="font-size:36px;margin:12px 0;letter-spacing:12px;">
-            ${shown.map(s => s.emoji).join('')} ❓
-          </div>
-          <div class="game-options">
-            ${puzzleOptions.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${missing.name}', this)">
-                ${o.emoji}
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      speak('Eksik olan hangisi?');
-      break;
-      
-    default:
-      questionHTML = `
-        <div class="game-area">
-          <div class="game-header">
-            <button class="back-btn" onclick="renderGames()">←</button>
-            <div class="game-score">⭐ ${gameScore}</div>
-          </div>
-          <div class="game-question">Bu hangisi?</div>
-          <div class="game-question-emoji">${correct.emoji}</div>
-          <div class="game-options">
-            ${options.map(o => `
-              <div class="game-option" onclick="checkAnswer('${o.name}', '${correct.name}', this)">
-                ${o.emoji}
-                <span>${o.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-  }
-  
-  document.getElementById('gamePlayArea').innerHTML = questionHTML;
-}
-
-function checkAnswer(selected, correct, element) {
-  const isCorrect = selected === correct;
-  
-  // Disable all options
-  document.querySelectorAll('.game-option').forEach(o => {
-    o.style.pointerEvents = 'none';
-  });
-  
-  if (isCorrect) {
-    element.classList.add('correct');
-    gameScore += 10;
-    speak('Aferin! Doğru!');
-    showConfetti();
-    
-    setTimeout(() => {
-      gameQuestionIndex++;
-      if (gameQuestionIndex >= 10) {
-        endGame();
-      } else {
-        generateGameQuestion();
-      }
-    }, 1500);
-  } else {
-    element.classList.add('wrong');
-    speak('Tekrar dene!');
-    
-    // Show correct answer
-    setTimeout(() => {
-      document.querySelectorAll('.game-option').forEach(o => {
-        o.style.pointerEvents = 'auto';
-      });
-      element.classList.remove('wrong');
-    }, 1000);
-  }
-}
-
-function initMemoryGame() {
-  const items = getAllItems().sort(() => Math.random() - 0.5).slice(0, 3);
-  memoryCards = [...items, ...items].sort(() => Math.random() - 0.5);
-  memoryFlipped = [];
-  memoryMatched = [];
-  
-  renderMemoryGame();
-}
-
-function renderMemoryGame() {
-  const html = `
-    <div class="game-area">
-      <div class="game-header">
-        <button class="back-btn" onclick="renderGames()">←</button>
-        <div class="game-score">⭐ ${gameScore} | Eşleşme: ${memoryMatched.length/2}/3</div>
-      </div>
-      <div class="game-question">Eşlerini bul!</div>
-      <div class="matching-grid">
-        ${memoryCards.map((card, idx) => `
-          <div class="matching-card ${memoryFlipped.includes(idx) ? 'flipped' : ''} ${memoryMatched.includes(idx) ? 'matched' : ''}" 
-               onclick="flipMemoryCard(${idx})">
-            <span class="card-front">${card.emoji}</span>
-            <span class="card-back">❓</span>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-  
-  document.getElementById('gamePlayArea').innerHTML = html;
-}
-
-function flipMemoryCard(idx) {
-  if (memoryFlipped.includes(idx) || memoryMatched.includes(idx)) return;
-  if (memoryFlipped.length >= 2) return;
-  
-  memoryFlipped.push(idx);
-  renderMemoryGame();
-  
-  if (memoryFlipped.length === 2) {
-    const [a, b] = memoryFlipped;
-    if (memoryCards[a].name === memoryCards[b].name) {
-      memoryMatched.push(a, b);
-      gameScore += 20;
-      speak('Harika! Eşleştirdin!');
-      memoryFlipped = [];
-      
-      setTimeout(() => {
-        if (memoryMatched.length === memoryCards.length) {
-          endGame();
-        } else {
-          renderMemoryGame();
-        }
-      }, 500);
-    } else {
-      setTimeout(() => {
-        memoryFlipped = [];
-        renderMemoryGame();
-      }, 1000);
-    }
-  }
-}
-
-function endGame() {
-  const gameName = games.find(g => g.id === currentGame)?.name || 'Oyun';
-  appData.gameScores[currentGame] = Math.max(appData.gameScores[currentGame] || 0, gameScore);
-  logActivity(`🎮 "${gameName}" tamamlandı: ${gameScore} puan`);
-  saveData(appData);
-  
-  showConfetti();
-  
-  const html = `
-    <div class="game-area" style="text-align:center;padding-top:40px;">
-      <div class="game-feedback" style="font-size:80px;">🎉</div>
-      <h2 style="font-size:24px;margin:16px 0;">Tebrikler!</h2>
-      <p style="font-size:16px;color:var(--text-light);">
-        ${gameName} oyununu tamamladın!<br>
-        Puan: <strong style="color:var(--primary);font-size:24px;">${gameScore}</strong>
-      </p>
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;">
-        <button class="game-next-btn" onclick="startGame('${currentGame}')">Tekrar Oyna</button>
-        <button class="game-next-btn" onclick="renderGames()" style="background:var(--bg);color:var(--text);">Oyunlara Dön</button>
-      </div>
-    </div>
-  `;
-  
-  document.getElementById('gamePlayArea').innerHTML = html;
-  speak('Tebrikler! Oyunu tamamladın!');
-  
-  if (gameScore >= 100) {
-    showAchievement('💯', 'Mükemmel Puan!', 'Tam puan aldın!');
-  }
-  
-  checkTrophies();
-}
-
-// ===== STATS =====
-function renderStats() {
-  const container = document.getElementById('statsContainer');
-  
-  const totalMinutes = Math.floor(appData.totalTime / 60);
-  const totalHours = Math.floor(totalMinutes / 60);
-  const sessionCount = appData.sessions.length;
-  const avgSessionMin = sessionCount > 0 ? Math.round(appData.totalTime / sessionCount / 60) : 0;
-  const uniqueDays = [...new Set(appData.sessions.map(s => s.day))].length;
-  
-  // Category stats
-  const catStats = categories.map(c => ({
-    name: c.name,
-    emoji: c.emoji,
-    views: appData.categoryViews[c.id] || 0,
-    learned: c.items.filter(i => appData.wordsLearned.includes(i.name)).length,
-    total: c.items.length
-  })).sort((a, b) => b.views - a.views);
-  
-  const maxViews = Math.max(...catStats.map(c => c.views), 1);
-  
-  // Hour distribution
-  const hourDist = new Array(24).fill(0);
-  appData.sessions.forEach(s => { if (s.hour !== undefined) hourDist[s.hour]++; });
-  const maxHour = Math.max(...hourDist, 1);
-  
-  // Day distribution
-  const dayNames = ['Pzr', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
-  const dayDist = new Array(7).fill(0);
-  appData.sessions.forEach(s => {
-    const d = new Date(s.date || s.timestamp);
-    dayDist[d.getDay()]++;
-  });
-  const maxDay = Math.max(...dayDist, 1);
-  
-  // Most viewed items
-  const topItems = Object.entries(appData.itemViews)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10);
-  const maxItemViews = topItems.length > 0 ? topItems[0][1] : 1;
-  
-  // Game scores
-  const gameStats = games.map(g => ({
-    name: g.name,
-    emoji: g.emoji,
-    score: appData.gameScores[g.id] || 0
-  })).filter(g => g.score > 0);
-  
-  container.innerHTML = `
-    <!-- Overview Cards -->
-    <div class="stats-overview">
-      <div class="stat-card">
-        <div class="stat-icon">📝</div>
-        <div class="stat-value">${appData.wordsLearned.length}</div>
-        <div class="stat-label">Öğrenilen Kelime</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">⏱️</div>
-        <div class="stat-value">${totalHours > 0 ? totalHours + 's ' : ''}${totalMinutes % 60}dk</div>
-        <div class="stat-label">Toplam Süre</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">📅</div>
-        <div class="stat-value">${uniqueDays}</div>
-        <div class="stat-label">Aktif Gün</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🔥</div>
-        <div class="stat-value">${appData.dailyStreak}</div>
-        <div class="stat-label">Gün Serisi</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🎮</div>
-        <div class="stat-value">${appData.gamesPlayed}</div>
-        <div class="stat-label">Oynanan Oyun</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">📊</div>
-        <div class="stat-value">${sessionCount}</div>
-        <div class="stat-label">Toplam Oturum</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">⏰</div>
-        <div class="stat-value">${avgSessionMin}dk</div>
-        <div class="stat-label">Ort. Oturum</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🏆</div>
-        <div class="stat-value">${trophyList.filter(t => t.condition(appData)).length}/${trophyList.length}</div>
-        <div class="stat-label">Kupa</div>
-      </div>
-    </div>
-    
-    <!-- Category Performance -->
-    <div class="chart-card">
-      <div class="chart-title">📚 Kategori Kullanımı</div>
-      <div class="bar-chart">
-        ${catStats.map(c => `
-          <div class="bar-row">
-            <div class="bar-label">${c.emoji} ${c.name.substring(0, 8)}</div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:${(c.views/maxViews)*100}%">${c.views}</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
-    <!-- Learning Progress -->
-    <div class="chart-card">
-      <div class="chart-title">📈 Öğrenme İlerleme</div>
-      <div class="bar-chart">
-        ${catStats.map(c => `
-          <div class="bar-row">
-            <div class="bar-label">${c.emoji} ${c.learned}/${c.total}</div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:${(c.learned/c.total)*100}%;background:linear-gradient(90deg,#00B894,#55EFC4);">
-                ${Math.round((c.learned/c.total)*100)}%
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
-    <!-- Hourly Activity -->
-    <div class="chart-card">
-      <div class="chart-title">🕐 Saatlik Aktivite</div>
-      <div class="time-chart">
-        ${hourDist.map((count, h) => `
-          <div class="time-bar" style="height:${(count/maxHour)*100}%">
-            <span class="time-bar-label">${h}</span>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
-    <!-- Weekly Activity -->
-    <div class="chart-card">
-      <div class="chart-title">📅 Haftalık Dağılım</div>
-      <div class="bar-chart">
-        ${dayNames.map((day, i) => `
-          <div class="bar-row">
-            <div class="bar-label">${day}</div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:${(dayDist[i]/maxDay)*100}%;background:linear-gradient(90deg,#6C5CE7,#A29BFE);">
-                ${dayDist[i]}
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
-    <!-- Most Viewed Items -->
-    ${topItems.length > 0 ? `
-    <div class="chart-card">
-      <div class="chart-title">⭐ En Çok İncelenen</div>
-      <div class="bar-chart">
-        ${topItems.map(([name, count]) => {
-          const item = getAllItems().find(i => i.name === name);
-          return `
-            <div class="bar-row">
-              <div class="bar-label">${item ? item.emoji : '📌'} ${name}</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width:${(count/maxItemViews)*100}%;background:linear-gradient(90deg,#E17055,#FDCB6E);">
-                  ${count}
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    </div>
-    ` : ''}
-    
-    <!-- Game Scores -->
-    ${gameStats.length > 0 ? `
-    <div class="chart-card">
-      <div class="chart-title">🎮 Oyun Skorları</div>
-      <div class="bar-chart">
-        ${gameStats.map(g => `
-          <div class="bar-row">
-            <div class="bar-label">${g.emoji} ${g.name}</div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:${Math.min((g.score/100)*100, 100)}%;background:linear-gradient(90deg,#FF6B6B,#FFE66D);">
-                ${g.score}
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    ` : ''}
-    
-    <!-- Activity Log -->
-    <div class="chart-card">
-      <div class="chart-title">📋 Son Aktiviteler</div>
-      <div class="activity-log">
-        ${appData.activityLog.slice(0, 20).map(a => `
-          <div class="activity-item">
-            <span class="act-time">${a.time}</span>
-            <span class="act-icon">${a.icon || '📌'}</span>
-            <span>${a.text}</span>
-          </div>
-        `).join('')}
-        ${appData.activityLog.length === 0 ? '<div class="activity-item"><span>Henüz aktivite yok</span></div>' : ''}
-      </div>
-    </div>
-    
-    <!-- Activity Heatmap -->
-    <div class="chart-card">
-      <div class="chart-title">🗓️ Son 28 Gün Aktivite Haritası</div>
-      <div class="heatmap">
-        ${generateHeatmap()}
-      </div>
-      <div class="heatmap-labels">
-        ${dayNames.map(d => `<span>${d}</span>`).join('')}
-      </div>
-    </div>
-    
-    <!-- Reset Button -->
-    <button class="reset-stats-btn" onclick="confirmResetStats()">
-      🗑️ İstatistikleri Sıfırla
-    </button>
-  `;
-}
-
-function generateHeatmap() {
-  const cells = [];
-  const now = Date.now();
-  
-  for (let i = 27; i >= 0; i--) {
-    const date = new Date(now - i * 86400000).toLocaleDateString('tr-TR');
-    const sessionsOnDay = appData.sessions.filter(s => s.day === date).length;
-    
-    let level = 0;
-    if (sessionsOnDay >= 5) level = 5;
-    else if (sessionsOnDay >= 4) level = 4;
-    else if (sessionsOnDay >= 3) level = 3;
-    else if (sessionsOnDay >= 2) level = 2;
-    else if (sessionsOnDay >= 1) level = 1;
-    
-    cells.push(`<div class="heatmap-cell level-${level}" title="${date}: ${sessionsOnDay} oturum"></div>`);
-  }
-  
-  return cells.join('');
-}
-
-function confirmResetStats() {
-  showModal(
-    '⚠️',
-    'İstatistikleri Sıfırla',
-    'Tüm istatistikler, öğrenme geçmişi ve kupalar sıfırlanacak. Bu işlem geri alınamaz!',
-    [
-      { text: 'İptal', class: 'secondary', action: 'closeModalDirect()' },
-      { text: 'Sıfırla', class: 'primary', action: 'resetStats()' }
-    ]
-  );
-}
-
-function resetStats() {
-  appData = getDefaultData();
-  saveData(appData);
-  closeModalDirect();
-  renderStats();
-  renderHome();
-  speak('İstatistikler sıfırlandı.');
-}
-
-// ===== SETTINGS =====
-function renderSettings() {
-  const list = document.getElementById('settingsList');
-  
-  list.innerHTML = `
-    <div class="settings-group">
-      <div class="settings-group-title">🎨 Görünüm</div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🎨</span>
-          <div class="setting-info">
-            <div class="setting-name">Tema</div>
-            <div class="setting-desc">Uygulama rengini seçin</div>
-          </div>
-        </div>
-      </div>
-      <div class="theme-options">
-        <button class="theme-btn ${appData.theme==='default'?'active':''}" data-theme="default" onclick="setTheme('default')"></button>
-        <button class="theme-btn ${appData.theme==='ocean'?'active':''}" data-theme="ocean" onclick="setTheme('ocean')"></button>
-        <button class="theme-btn ${appData.theme==='forest'?'active':''}" data-theme="forest" onclick="setTheme('forest')"></button>
-        <button class="theme-btn ${appData.theme==='sunset'?'active':''}" data-theme="sunset" onclick="setTheme('sunset')"></button>
-        <button class="theme-btn ${appData.theme==='candy'?'active':''}" data-theme="candy" onclick="setTheme('candy')"></button>
-        <button class="theme-btn ${appData.theme==='night'?'active':''}" data-theme="night" onclick="setTheme('night')"></button>
-      </div>
-    </div>
-    
-    <div class="settings-group">
-      <div class="settings-group-title">🔊 Ses</div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🔊</span>
-          <div class="setting-info">
-            <div class="setting-name">Seslendirme</div>
-            <div class="setting-desc">Kelimeleri sesli okuma</div>
-          </div>
-        </div>
-        <button class="toggle-switch ${appData.soundEnabled?'active':''}" onclick="toggleSound(this)"></button>
-      </div>
-    </div>
-    
-    <div class="settings-group">
-      <div class="settings-group-title">📱 Ekran</div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🔍</span>
-          <div class="setting-info">
-            <div class="setting-name">Yakınlaştırma: ${Math.round(zoomLevel*100)}%</div>
-            <div class="setting-desc">Ekran boyutunu ayarlayın</div>
-          </div>
-        </div>
-      </div>
-      <div style="padding:8px 16px 14px;display:flex;gap:8px;">
-        <button class="modal-btn secondary" onclick="changeZoom(-0.1)" style="font-size:18px;">−</button>
-        <button class="modal-btn secondary" onclick="resetZoom()" style="font-size:12px;">Sıfırla</button>
-        <button class="modal-btn secondary" onclick="changeZoom(0.1)" style="font-size:18px;">+</button>
-      </div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">⛶</span>
-          <div class="setting-info">
-            <div class="setting-name">Tam Ekran</div>
-            <div class="setting-desc">Tam ekran moduna geç</div>
-          </div>
-        </div>
-        <button class="modal-btn primary" onclick="toggleFullscreen()" style="padding:8px 16px;font-size:12px;">Aç/Kapat</button>
-      </div>
-    </div>
-    
-    <div class="settings-group">
-      <div class="settings-group-title">📊 Veri</div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">💾</span>
-          <div class="setting-info">
-            <div class="setting-name">Veri Boyutu</div>
-            <div class="setting-desc">${(JSON.stringify(appData).length / 1024).toFixed(1)} KB kullanılıyor</div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🗑️</span>
-          <div class="setting-info">
-            <div class="setting-name">İstatistikleri Sıfırla</div>
-            <div class="setting-desc">Tüm verileri temizle</div>
-          </div>
-        </div>
-        <button class="modal-btn secondary" onclick="confirmResetStats()" style="padding:8px 16px;font-size:12px;color:#FF7675;">Sıfırla</button>
-      </div>
-    </div>
-    
-    <div class="settings-group">
-      <div class="settings-group-title">ℹ️ Hakkında</div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🌟</span>
-          <div class="setting-info">
-            <div class="setting-name">Mihra Öğreniyor</div>
-            <div class="setting-desc">v2.0 Premium Edition</div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">👶</span>
-          <div class="setting-info">
-            <div class="setting-name">Yaş Grubu</div>
-            <div class="setting-desc">24-36 Ay (2-3 Yaş)</div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">📚</span>
-          <div class="setting-info">
-            <div class="setting-name">Toplam İçerik</div>
-            <div class="setting-desc">${categories.length} kategori, ${getAllItems().length} öğe, ${games.length} oyun</div>
-          </div>
-        </div>
-      </div>
-      <div class="setting-item">
-        <div class="setting-left">
-          <span class="setting-icon">🔒</span>
-          <div class="setting-info">
-            <div class="setting-name">Gizlilik</div>
-            <div class="setting-desc">Veriler yalnızca bu cihazda saklanır. Hiçbir yere gönderilmez.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// ===== THEME =====
-function setTheme(theme) {
-  appData.theme = theme;
-  saveData(appData);
-  applyTheme(theme);
-  renderSettings();
-}
-
-function applyTheme(theme) {
-  if (theme === 'default') {
-    document.documentElement.removeAttribute('data-theme');
-  } else {
-    document.documentElement.setAttribute('data-theme', theme);
-  }
-}
-
-function toggleSound(btn) {
-  appData.soundEnabled = !appData.soundEnabled;
-  btn.classList.toggle('active');
-  saveData(appData);
-}
-
-// ===== ZOOM =====
-function changeZoom(delta) {
-  zoomLevel = Math.max(0.5, Math.min(1.5, zoomLevel + delta));
-  zoomLevel = Math.round(zoomLevel * 100) / 100;
-  appData.zoom = zoomLevel;
-  saveData(appData);
-  applyZoom();
-}
-
-function resetZoom() {
-  zoomLevel = 1;
-  appData.zoom = 1;
-  saveData(appData);
-  applyZoom();
-}
-
-function applyZoom() {
-  document.documentElement.style.setProperty('--zoom', zoomLevel);
-  document.getElementById('zoomLevel').textContent = Math.round(zoomLevel * 100) + '%';
-  
-  // Use transform for Firefox compatibility
-  if (navigator.userAgent.includes('Firefox')) {
-    document.body.style.transform = `scale(${zoomLevel})`;
-    document.body.style.transformOrigin = '0 0';
-    document.body.style.width = `${100/zoomLevel}%`;
-  } else {
-    document.body.style.zoom = zoomLevel;
-  }
-}
-
-// ===== FULLSCREEN =====
-function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen?.() ||
-    document.documentElement.webkitRequestFullscreen?.() ||
-    document.documentElement.msRequestFullscreen?.();
-  } else {
-    document.exitFullscreen?.() ||
-    document.webkitExitFullscreen?.() ||
-    document.msExitFullscreen?.();
-  }
-}
-
-// ===== MODAL =====
-function showModal(emoji, title, text, buttons) {
-  document.getElementById('modalEmoji').textContent = emoji;
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalText').textContent = text;
-  
-  document.getElementById('modalButtons').innerHTML = buttons.map(b => 
-    `<button class="modal-btn ${b.class}" onclick="${b.action}">${b.text}</button>`
-  ).join('');
-  
-  document.getElementById('modalOverlay').classList.add('show');
-}
-
-function closeModal(event) {
-  if (event.target === document.getElementById('modalOverlay')) {
-    closeModalDirect();
-  }
-}
-
-function closeModalDirect() {
-  document.getElementById('modalOverlay').classList.remove('show');
-}
-
-// ===== ACHIEVEMENTS =====
-function showAchievement(icon, title, desc) {
-  const popup = document.getElementById('achievementPopup');
-  document.getElementById('achieveIcon').textContent = icon;
-  document.getElementById('achieveTitle').textContent = title;
-  document.getElementById('achieveDesc').textContent = desc;
-  
-  popup.classList.add('show');
-  showConfetti();
-  
-  setTimeout(() => {
-    popup.classList.remove('show');
-  }, 4000);
-  
-  if (!appData.achievements.includes(title)) {
-    appData.achievements.push(title);
-    logActivity(`🏆 Başarı: ${title}`);
-    saveData(appData);
-  }
-}
-
-function checkTrophies() {
-  trophyList.forEach(t => {
-    if (t.condition(appData) && !appData.trophies.includes(t.id)) {
-      appData.trophies.push(t.id);
-      showAchievement(t.emoji, t.name + ' Kupası!', 'Yeni bir kupa kazandın!');
-      saveData(appData);
-    }
-  });
-}
-
-// ===== CONFETTI =====
-function showConfetti() {
-  const container = document.getElementById('confettiContainer');
-  const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#6C63FF', '#FF85A2', '#55EFC4'];
-  
-  for (let i = 0; i < 30; i++) {
-    const confetti = document.createElement('div');
-    confetti.className = 'confetti';
-    confetti.style.left = Math.random() * 100 + '%';
-    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    confetti.style.width = (Math.random() * 8 + 5) + 'px';
-    confetti.style.height = (Math.random() * 8 + 5) + 'px';
-    container.appendChild(confetti);
-    
-    setTimeout(() => confetti.remove(), 4000);
-  }
-}
-
-// ===== ACTIVITY LOG =====
-function logActivity(text) {
-  const now = new Date();
-  appData.activityLog.unshift({
-    time: now.toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'}),
-    text: text,
-    icon: text.includes('🎮') ? '🎮' : text.includes('🏆') ? '🏆' : '📌',
-    date: now.toLocaleDateString('tr-TR')
-  });
-  if (appData.activityLog.length > 200) appData.activityLog = appData.activityLog.slice(0, 200);
-}
-
-// ===== BEFORE UNLOAD =====
-window.addEventListener('beforeunload', () => {
-  appData.totalTime += 0; // ensure saved
-  saveData(appData);
+// ===================== ANTI-COPY PROTECTION =====================
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+document.addEventListener('cut',e=>e.preventDefault());
+document.addEventListener('paste',e=>e.preventDefault());
+document.addEventListener('dragstart',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+if(e.key==='F12')e.preventDefault();
+if(e.ctrlKey&&['c','u','s','a','p','j','i'].includes(e.key.toLowerCase()))e.preventDefault();
+if(e.ctrlKey&&e.shiftKey&&['i','j','c'].includes(e.key.toLowerCase()))e.preventDefault();
 });
 
-// ===== SERVICE WORKER SIMULATION FOR PWA FEEL =====
-if ('serviceWorker' in navigator) {
-  // Can add service worker for offline support
+// ===================== DATA =====================
+const CATEGORIES = [
+{id:'pets',name:'Evcil Hayvanlar',icon:'🐾',gradient:['#FF6B6B','#EE5A24'],items:[
+{n:'Kedi',e:'🐱'},{n:'Köpek',e:'🐶'},{n:'Balık',e:'🐟'},{n:'Kuş',e:'🐦'},{n:'Tavşan',e:'🐰'},
+{n:'Kaplumbağa',e:'🐢'},{n:'Hamster',e:'🐹'},{n:'Papağan',e:'🦜'},{n:'Civciv',e:'🐥'},{n:'Ördek',e:'🦆'},
+{n:'At',e:'🐴'},{n:'İnek',e:'🐮'},{n:'Koyun',e:'🐑'},{n:'Keçi',e:'🐐'},{n:'Tavuk',e:'🐔'},{n:'Horoz',e:'🐓'}
+]},
+{id:'wild',name:'Yabani Hayvanlar',icon:'🦁',gradient:['#F9CA24','#F0932B'],items:[
+{n:'Aslan',e:'🦁'},{n:'Fil',e:'🐘'},{n:'Zürafa',e:'🦒'},{n:'Maymun',e:'🐵'},{n:'Ayı',e:'🐻'},
+{n:'Kurt',e:'🐺'},{n:'Tilki',e:'🦊'},{n:'Penguen',e:'🐧'},{n:'Yunus',e:'🐬'},{n:'Timsah',e:'🐊'},
+{n:'Zebra',e:'🦓'},{n:'Panda',e:'🐼'},{n:'Koala',e:'🐨'},{n:'Baykuş',e:'🦉'},{n:'Kartal',e:'🦅'},
+{n:'Balina',e:'🐋'},{n:'Köpekbalığı',e:'🦈'},{n:'Gergedan',e:'🦏'},{n:'Kaplan',e:'🐯'},{n:'Tavus Kuşu',e:'🦚'}
+]},
+{id:'fruits',name:'Meyveler',icon:'🍎',gradient:['#FF6348','#EE5A24'],items:[
+{n:'Elma',e:'🍎'},{n:'Muz',e:'🍌'},{n:'Portakal',e:'🍊'},{n:'Çilek',e:'🍓'},{n:'Üzüm',e:'🍇'},
+{n:'Karpuz',e:'🍉'},{n:'Armut',e:'🍐'},{n:'Kiraz',e:'🍒'},{n:'Şeftali',e:'🍑'},{n:'Limon',e:'🍋'},
+{n:'Ananas',e:'🍍'},{n:'Kivi',e:'🥝'},{n:'Hindistan Cevizi',e:'🥥'},{n:'Kavun',e:'🍈'},{n:'Erik',e:'🫐'}
+]},
+{id:'vegs',name:'Sebzeler',icon:'🥕',gradient:['#00B894','#00CEC9'],items:[
+{n:'Havuç',e:'🥕'},{n:'Domates',e:'🍅'},{n:'Biber',e:'🌶️'},{n:'Brokoli',e:'🥦'},{n:'Mısır',e:'🌽'},
+{n:'Patlıcan',e:'🍆'},{n:'Salatalık',e:'🥒'},{n:'Patates',e:'🥔'},{n:'Soğan',e:'🧅'},{n:'Sarımsak',e:'🧄'},
+{n:'Mantar',e:'🍄'},{n:'Marul',e:'🥬'},{n:'Kabak',e:'🎃'}
+]},
+{id:'colors',name:'Renkler',icon:'🎨',gradient:['#A29BFE','#6C5CE7'],items:[
+{n:'Kırmızı',e:'🔴'},{n:'Mavi',e:'🔵'},{n:'Yeşil',e:'🟢'},{n:'Sarı',e:'🟡'},{n:'Turuncu',e:'🟠'},
+{n:'Mor',e:'🟣'},{n:'Siyah',e:'⚫'},{n:'Beyaz',e:'⚪'},{n:'Kahverengi',e:'🟤'},{n:'Pembe',e:'💗'}
+]},
+{id:'shapes',name:'Şekiller',icon:'🔷',gradient:['#74B9FF','#0984E3'],items:[
+{n:'Daire',e:'⭕'},{n:'Yıldız',e:'⭐'},{n:'Kalp',e:'❤️'},{n:'Kare',e:'🟦'},{n:'Üçgen',e:'🔺'},
+{n:'Elmas',e:'💎'},{n:'Ay',e:'🌙'},{n:'Artı',e:'➕'},{n:'Çarpı',e:'✖️'}
+]},
+{id:'vehicles',name:'Taşıtlar',icon:'🚗',gradient:['#FD79A8','#E84393'],items:[
+{n:'Araba',e:'🚗'},{n:'Otobüs',e:'🚌'},{n:'Kamyon',e:'🚛'},{n:'Tren',e:'🚂'},{n:'Uçak',e:'✈️'},
+{n:'Gemi',e:'🚢'},{n:'Helikopter',e:'🚁'},{n:'Bisiklet',e:'🚲'},{n:'Motosiklet',e:'🏍️'},{n:'Ambulans',e:'🚑'},
+{n:'İtfaiye',e:'🚒'},{n:'Polis Arabası',e:'🚓'},{n:'Roket',e:'🚀'},{n:'Taksi',e:'🚕'},{n:'Traktör',e:'🚜'}
+]},
+{id:'emotions',name:'Duygular',icon:'😊',gradient:['#FDCB6E','#E17055'],items:[
+{n:'Mutlu',e:'😊'},{n:'Üzgün',e:'😢'},{n:'Kızgın',e:'😠'},{n:'Şaşkın',e:'😲'},{n:'Korkmuş',e:'😨'},
+{n:'Uykulu',e:'😴'},{n:'Gülen',e:'😄'},{n:'Ağlayan',e:'😭'},{n:'Düşünen',e:'🤔'},{n:'Sevgi Dolu',e:'🥰'},
+{n:'Utangaç',e:'😳'},{n:'Heyecanlı',e:'🤩'}
+]},
+{id:'body',name:'Vücut',icon:'🧒',gradient:['#55E6C1','#1ABC9C'],items:[
+{n:'Göz',e:'👁️'},{n:'Burun',e:'👃'},{n:'Kulak',e:'👂'},{n:'El',e:'✋'},{n:'Ayak',e:'🦶'},
+{n:'Ağız',e:'👄'},{n:'Diş',e:'🦷'},{n:'Dil',e:'👅'},{n:'Kalp',e:'❤️'},{n:'Beyin',e:'🧠'},
+{n:'Kemik',e:'🦴'},{n:'Kas',e:'💪'},{n:'Parmak',e:'☝️'}
+]},
+{id:'family',name:'Aile',icon:'👨‍👩‍👧',gradient:['#FF9FF3','#F368E0'],items:[
+{n:'Anne',e:'👩'},{n:'Baba',e:'👨'},{n:'Bebek',e:'👶'},{n:'Dede',e:'👴'},{n:'Nine',e:'👵'},
+{n:'Abla',e:'👧'},{n:'Ağabey',e:'👦'},{n:'Aile',e:'👨‍👩‍👧'},{n:'Kız Çocuk',e:'👧'},{n:'Erkek Çocuk',e:'👦'}
+]},
+{id:'clothes',name:'Giysiler',icon:'👗',gradient:['#C44569','#CF6A87'],items:[
+{n:'Şapka',e:'🧢'},{n:'Gözlük',e:'👓'},{n:'Ayakkabı',e:'👟'},{n:'Çorap',e:'🧦'},{n:'Eldiven',e:'🧤'},
+{n:'Atkı',e:'🧣'},{n:'Elbise',e:'👗'},{n:'Tişört',e:'👕'},{n:'Pantolon',e:'👖'},{n:'Ceket',e:'🧥'},
+{n:'Bot',e:'👢'},{n:'Taç',e:'👑'}
+]},
+{id:'food',name:'Yiyecekler',icon:'🍕',gradient:['#E15F41','#C44569'],items:[
+{n:'Ekmek',e:'🍞'},{n:'Peynir',e:'🧀'},{n:'Yumurta',e:'🥚'},{n:'Süt',e:'🥛'},{n:'Pasta',e:'🎂'},
+{n:'Dondurma',e:'🍦'},{n:'Pizza',e:'🍕'},{n:'Makarna',e:'🍝'},{n:'Çorba',e:'🍲'},{n:'Pilav',e:'🍚'},
+{n:'Kurabiye',e:'🍪'},{n:'Çikolata',e:'🍫'},{n:'Bal',e:'🍯'},{n:'Hamburger',e:'🍔'},{n:'Patates Kızartması',e:'🍟'}
+]},
+{id:'nature',name:'Doğa',icon:'🌿',gradient:['#6AB04C','#27AE60'],items:[
+{n:'Güneş',e:'☀️'},{n:'Ay',e:'🌙'},{n:'Yıldız',e:'⭐'},{n:'Bulut',e:'☁️'},{n:'Yağmur',e:'🌧️'},
+{n:'Kar',e:'❄️'},{n:'Çiçek',e:'🌸'},{n:'Ağaç',e:'🌳'},{n:'Gökkuşağı',e:'🌈'},{n:'Deniz',e:'🌊'},
+{n:'Dağ',e:'⛰️'},{n:'Volkan',e:'🌋'},{n:'Yaprak',e:'🍃'},{n:'Gül',e:'🌹'},{n:'Mantar',e:'🍄'},
+{n:'Lale',e:'🌷'},{n:'Papatya',e:'🌼'}
+]},
+{id:'numbers',name:'Sayılar',icon:'🔢',gradient:['#3498DB','#2980B9'],items:[
+{n:'Bir',e:'1️⃣'},{n:'İki',e:'2️⃣'},{n:'Üç',e:'3️⃣'},{n:'Dört',e:'4️⃣'},{n:'Beş',e:'5️⃣'},
+{n:'Altı',e:'6️⃣'},{n:'Yedi',e:'7️⃣'},{n:'Sekiz',e:'8️⃣'},{n:'Dokuz',e:'9️⃣'},{n:'On',e:'🔟'}
+]},
+{id:'objects',name:'Eşyalar',icon:'🏠',gradient:['#FDA7DF','#D980FA'],items:[
+{n:'Ev',e:'🏠'},{n:'Top',e:'⚽'},{n:'Kitap',e:'📖'},{n:'Kalem',e:'✏️'},{n:'Masa',e:'🪑'},
+{n:'Sandalye',e:'🪑'},{n:'Saat',e:'⏰'},{n:'Telefon',e:'📱'},{n:'Anahtar',e:'🔑'},{n:'Lamba',e:'💡'},
+{n:'Çanta',e:'🎒'},{n:'Şemsiye',e:'☂️'},{n:'Oyuncak Ayı',e:'🧸'},{n:'Balon',e:'🎈'},{n:'Mum',e:'🕯️'},
+{n:'Makas',e:'✂️'},{n:'Bardak',e:'🥤'},{n:'Tabak',e:'🍽️'},{n:'Kaşık',e:'🥄'},{n:'Çatal',e:'🍴'}
+]},
+{id:'music',name:'Müzik',icon:'🎵',gradient:['#E056A0','#F0A500'],items:[
+{n:'Davul',e:'🥁'},{n:'Gitar',e:'🎸'},{n:'Trompet',e:'🎺'},{n:'Keman',e:'🎻'},{n:'Piyano',e:'🎹'},
+{n:'Flüt',e:'🪈'},{n:'Müzik',e:'🎵'},{n:'Mikrofon',e:'🎤'},{n:'Kulaklık',e:'🎧'},{n:'Nota',e:'🎶'}
+]},
+{id:'weather',name:'Hava Durumu',icon:'🌤️',gradient:['#45AAF2','#2D98DA'],items:[
+{n:'Güneşli',e:'☀️'},{n:'Bulutlu',e:'☁️'},{n:'Yağmurlu',e:'🌧️'},{n:'Karlı',e:'🌨️'},{n:'Fırtına',e:'⛈️'},
+{n:'Rüzgarlı',e:'💨'},{n:'Sisli',e:'🌫️'},{n:'Gökkuşağı',e:'🌈'},{n:'Şimşek',e:'⚡'},{n:'Sıcak',e:'🌡️'}
+]},
+{id:'actions',name:'Hareketler',icon:'🏃',gradient:['#26DE81','#20BF6B'],items:[
+{n:'Koşmak',e:'🏃'},{n:'Yüzmek',e:'🏊'},{n:'Uyumak',e:'😴'},{n:'Yemek',e:'🍽️'},{n:'İçmek',e:'🥤'},
+{n:'Oynamak',e:'⚽'},{n:'Okumak',e:'📖'},{n:'Şarkı söylemek',e:'🎤'},{n:'Dans etmek',e:'💃'},{n:'Boyamak',e:'🎨'},
+{n:'Alkışlamak',e:'👏'},{n:'El sallamak',e:'👋'}
+]}
+];
+
+const GAMES = [
+{id:'find',name:'Doğru Resmi Bul',icon:'🔍',desc:'Söylenen kelimeyi bul!',color:'#FF6B6B'},
+{id:'memory',name:'Hafıza Kartları',icon:'🃏',desc:'Eşlerini bul!',color:'#4ECDC4'},
+{id:'colorMatch',name:'Renk Eşleştirme',icon:'🎨',desc:'Doğru rengi bul!',color:'#A29BFE'},
+{id:'count',name:'Sayı Sayma',icon:'🔢',desc:'Doğru sayıyı bul!',color:'#FDCB6E'},
+{id:'shadow',name:'Gölge Eşleştirme',icon:'👤',desc:'Kimin gölgesi?',color:'#636E72'},
+{id:'category',name:'Kategori Sepeti',icon:'🧺',desc:'Doğru kategoriye koy!',color:'#00B894'}
+];
+
+const ACHIEVEMENTS = [
+{id:'first_step',name:'İlk Adım',icon:'👣',desc:'İlk kategoriyi aç',check:s=>s.totalCatViews>=1},
+{id:'explorer',name:'Kaşif',icon:'🧭',desc:'Tüm kategorileri aç',check:s=>Object.keys(s.categoryViews||{}).length>=CATEGORIES.length},
+{id:'word50',name:'Kelime Ustası',icon:'📚',desc:'50 kelime öğren',check:s=>Object.keys(s.itemViews||{}).length>=50},
+{id:'word100',name:'Dil Dehası',icon:'🏆',desc:'100 kelime öğren',check:s=>Object.keys(s.itemViews||{}).length>=100},
+{id:'gamer',name:'Oyun Sever',icon:'🎮',desc:'İlk oyunu oyna',check:s=>(s.gamesPlayed||0)>=1},
+{id:'champion',name:'Şampiyon',icon:'🥇',desc:'Bir oyunda tam puan al',check:s=>s.perfectGame||false},
+{id:'streak3',name:'3 Gün Üst Üste',icon:'🔥',desc:'3 gün arka arkaya gir',check:s=>(s.streak||0)>=3},
+{id:'streak7',name:'Hafta Yıldızı',icon:'⭐',desc:'7 gün arka arkaya gir',check:s=>(s.streak||0)>=7},
+{id:'time30',name:'Öğrenme Aşkı',icon:'⏰',desc:'Toplam 30 dk geçir',check:s=>(s.totalTime||0)>=1800},
+{id:'allGames',name:'Çok Yönlü',icon:'🎯',desc:'Tüm oyunları dene',check:s=>Object.keys(s.gameTypes||{}).length>=GAMES.length}
+];
+
+const THEMES = [
+{id:'rainbow',name:'Gökkuşağı',icon:'🌈'},
+{id:'ocean',name:'Okyanus',icon:'🌊'},
+{id:'forest',name:'Orman',icon:'🌲'},
+{id:'princess',name:'Prenses',icon:'👑'},
+{id:'night',name:'Gece',icon:'🌙'}
+];
+
+// ===================== STATE =====================
+let state = {
+screen:'splash',
+catId:null,
+viewMode:'grid',
+cardIndex:0,
+gameId:null,
+zoom:1,
+theme:'rainbow'
+};
+
+let stats = {};
+let sessionStart = Date.now();
+let sessionTimer = null;
+let speakQueue = [];
+let isSpeaking = false;
+
+// ===================== STORAGE =====================
+function loadStats(){
+try{stats=JSON.parse(localStorage.getItem('mihra_stats')||'{}');}catch(e){stats={};}
+if(!stats.categoryViews)stats.categoryViews={};
+if(!stats.itemViews)stats.itemViews={};
+if(!stats.dailyUsage)stats.dailyUsage={};
+if(!stats.hourlyUsage)stats.hourlyUsage={};
+if(!stats.sessions)stats.sessions=[];
+if(!stats.gameScores)stats.gameScores={};
+if(!stats.gameTypes)stats.gameTypes={};
+if(!stats.totalTime)stats.totalTime=0;
+if(!stats.totalCatViews)stats.totalCatViews=0;
+if(!stats.gamesPlayed)stats.gamesPlayed=0;
+if(!stats.streak)stats.streak=0;
+if(!stats.lastDate)stats.lastDate='';
+if(!stats.earnedBadges)stats.earnedBadges=[];
+return stats;
 }
 
-// ===== KEYBOARD SHORTCUTS =====
-document.addEventListener('keydown', (e) => {
-  if (currentView === 'single' && currentCategory) {
-    if (e.key === 'ArrowLeft') prevCard();
-    else if (e.key === 'ArrowRight') nextCard();
-    else if (e.key === ' ') { e.preventDefault(); speakCurrentItem(); }
-  }
+function saveStats(){
+try{localStorage.setItem('mihra_stats',JSON.stringify(stats));}catch(e){}
+}
+
+function loadSettings(){
+try{
+let s=JSON.parse(localStorage.getItem('mihra_settings')||'{}');
+if(s.theme){state.theme=s.theme;document.documentElement.setAttribute('data-theme',s.theme);}
+if(s.zoom)state.zoom=s.zoom;
+if(s.viewMode)state.viewMode=s.viewMode;
+if(s.lastScreen)state.lastScreen=s.lastScreen;
+if(s.lastCatId)state.lastCatId=s.lastCatId;
+}catch(e){}
+}
+
+function saveSettings(){
+try{localStorage.setItem('mihra_settings',JSON.stringify({
+theme:state.theme,zoom:state.zoom,viewMode:state.viewMode,
+lastScreen:state.screen,lastCatId:state.catId
+}));}catch(e){}
+}
+
+// ===================== TRACKING =====================
+function trackCategoryView(catId){
+stats.categoryViews[catId]=(stats.categoryViews[catId]||0)+1;
+stats.totalCatViews=(stats.totalCatViews||0)+1;
+saveStats();checkAchievements();
+}
+function trackItemView(name){
+stats.itemViews[name]=(stats.itemViews[name]||0)+1;
+saveStats();checkAchievements();
+}
+function trackGamePlayed(gameId,score,total){
+stats.gamesPlayed=(stats.gamesPlayed||0)+1;
+stats.gameTypes[gameId]=(stats.gameTypes[gameId]||0)+1;
+if(!stats.gameScores[gameId])stats.gameScores[gameId]=[];
+stats.gameScores[gameId].push({date:new Date().toISOString(),score,total});
+if(score===total)stats.perfectGame=true;
+saveStats();checkAchievements();
+}
+function trackTime(){
+let now=new Date();
+let dateKey=now.toISOString().split('T')[0];
+let hour=now.getHours();
+stats.dailyUsage[dateKey]=(stats.dailyUsage[dateKey]||0)+1;
+stats.hourlyUsage[hour]=(stats.hourlyUsage[hour]||0)+1;
+stats.totalTime=(stats.totalTime||0)+1;
+// Streak
+if(stats.lastDate!==dateKey){
+let yesterday=new Date(now);yesterday.setDate(yesterday.getDate()-1);
+let yKey=yesterday.toISOString().split('T')[0];
+if(stats.lastDate===yKey){stats.streak=(stats.streak||0)+1;}
+else if(stats.lastDate!==dateKey){stats.streak=1;}
+stats.lastDate=dateKey;
+}
+saveStats();
+}
+function checkAchievements(){
+let newBadges=[];
+ACHIEVEMENTS.forEach(a=>{
+if(!stats.earnedBadges.includes(a.id)&&a.check(stats)){
+stats.earnedBadges.push(a.id);
+newBadges.push(a);
+}
+});
+if(newBadges.length>0){saveStats();newBadges.forEach(b=>showToast('🏅 Rozet: '+b.name));}
+}
+function resetAllStats(){
+stats={categoryViews:{},itemViews:{},dailyUsage:{},hourlyUsage:{},sessions:[],gameScores:{},gameTypes:{},
+totalTime:0,totalCatViews:0,gamesPlayed:0,streak:0,lastDate:'',earnedBadges:[],perfectGame:false};
+saveStats();showToast('İstatistikler sıfırlandı');navigate('stats');
+}
+
+// ===================== SPEECH =====================
+function speak(text){
+if(!('speechSynthesis' in window))return;
+window.speechSynthesis.cancel();
+let u=new SpeechSynthesisUtterance(text);
+u.lang='tr-TR';u.rate=0.8;u.pitch=1.1;u.volume=1;
+let voices=speechSynthesis.getVoices();
+let trVoice=voices.find(v=>v.lang.startsWith('tr'));
+if(trVoice)u.voice=trVoice;
+speechSynthesis.speak(u);
+}
+if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{};
+
+function playCorrectSound(){
+try{let ac=new(window.AudioContext||window.webkitAudioContext)();
+let o=ac.createOscillator();let g=ac.createGain();o.connect(g);g.connect(ac.destination);
+o.frequency.setValueAtTime(523,ac.currentTime);o.frequency.setValueAtTime(659,ac.currentTime+0.1);
+o.frequency.setValueAtTime(784,ac.currentTime+0.2);g.gain.setValueAtTime(0.3,ac.currentTime);
+g.gain.exponentialRampToValueAtTime(0.01,ac.currentTime+0.4);o.start();o.stop(ac.currentTime+0.4);}catch(e){}
+}
+function playWrongSound(){
+try{let ac=new(window.AudioContext||window.webkitAudioContext)();
+let o=ac.createOscillator();let g=ac.createGain();o.connect(g);g.connect(ac.destination);
+o.frequency.setValueAtTime(300,ac.currentTime);o.frequency.setValueAtTime(200,ac.currentTime+0.15);
+o.type='square';g.gain.setValueAtTime(0.2,ac.currentTime);
+g.gain.exponentialRampToValueAtTime(0.01,ac.currentTime+0.3);o.start();o.stop(ac.currentTime+0.3);}catch(e){}
+}
+
+// ===================== UI UTILITIES =====================
+function showToast(msg){
+let t=document.createElement('div');t.className='toast';t.textContent=msg;
+document.body.appendChild(t);setTimeout(()=>t.remove(),2500);
+}
+function showConfetti(){
+for(let i=0;i<30;i++){
+let c=document.createElement('div');c.className='confetti-piece';
+c.style.left=Math.random()*100+'%';
+c.style.background=['#FF6B6B','#4ECDC4','#FFD93D','#A29BFE','#FF9FF3','#55E6C1'][Math.floor(Math.random()*6)];
+c.style.width=Math.random()*10+5+'px';c.style.height=Math.random()*10+5+'px';
+c.style.borderRadius=Math.random()>.5?'50%':'2px';
+c.style.animationDuration=Math.random()*2+2+'s';
+c.style.animationDelay=Math.random()*0.5+'s';
+document.body.appendChild(c);setTimeout(()=>c.remove(),4000);
+}
+}
+function showModal(title,msg,onConfirm,onCancel){
+let html=`<div class="modal-overlay" onclick="if(event.target===this)this.remove()">
+<div class="modal"><h3>${title}</h3><p>${msg}</p><div class="modal-btns">
+${onCancel?'<button class="modal-btn secondary" onclick="this.closest(\'.modal-overlay\').remove()">İptal</button>':''}
+<button class="modal-btn primary" id="modalConfirm">Tamam</button></div></div></div>`;
+document.body.insertAdjacentHTML('beforeend',html);
+document.getElementById('modalConfirm').onclick=()=>{
+document.querySelector('.modal-overlay').remove();if(onConfirm)onConfirm();
+};
+}
+function toggleFullscreen(){
+if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+else{document.exitFullscreen();}
+}
+function adjustZoom(d){
+state.zoom=Math.max(0.5,Math.min(1.5,state.zoom+d));
+document.getElementById('app-wrapper').style.transform='scale('+state.zoom+')';
+saveSettings();
+}
+function resetZoom(){state.zoom=1;document.getElementById('app-wrapper').style.transform='scale(1)';saveSettings();}
+
+function formatTime(sec){
+let h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;
+if(h>0)return h+'s '+m+'dk';
+return m+'dk '+s+'sn';
+}
+
+function getDailyWord(){
+let today=new Date().toDateString();
+let seed=0;for(let i=0;i<today.length;i++)seed+=today.charCodeAt(i);
+let allItems=[];CATEGORIES.forEach(c=>c.items.forEach(it=>allItems.push({...it,cat:c.name,catIcon:c.icon})));
+return allItems[seed%allItems.length];
+}
+
+// ===================== NAVIGATION =====================
+function navigate(screen,params){
+state.screen=screen;
+if(params){
+if(params.catId!==undefined)state.catId=params.catId;
+if(params.gameId!==undefined)state.gameId=params.gameId;
+if(params.cardIndex!==undefined)state.cardIndex=params.cardIndex;
+}
+saveSettings();render();
+window.scrollTo(0,0);
+document.getElementById('app').scrollTop=0;
+}
+
+// ===================== RENDER =====================
+function render(){
+const app=document.getElementById('app');
+let html='';
+switch(state.screen){
+case 'splash':html=renderSplash();break;
+case 'home':html=renderHome();break;
+case 'category':html=renderCategory();break;
+case 'games':html=renderGames();break;
+case 'gamePlay':html=renderGamePlay();break;
+case 'stats':html=renderStats();break;
+case 'settings':html=renderSettings();break;
+default:html=renderHome();
+}
+app.innerHTML=html;
+document.getElementById('floatControls').style.display=state.screen==='splash'?'none':'flex';
+bindEvents();
+}
+
+function renderHeader(title,showBack){
+let elapsed=Math.floor((Date.now()-sessionStart)/1000);
+let m=Math.floor(elapsed/60).toString().padStart(2,'0');
+let s=(elapsed%60).toString().padStart(2,'0');
+return `<div class="header">
+${showBack?'<button class="header-btn" onclick="navigate(\''+
+(state.screen==='category'?'home':state.screen==='gamePlay'?'games':'home')
++'\')">◂</button>':''}
+<div class="header-title">✨ ${title}</div>
+<div class="timer-badge" id="sessionTimer">${m}:${s}</div>
+</div>`;
+}
+
+function renderNav(){
+let items=[
+{id:'home',icon:'🏠',label:'Ana Sayfa'},
+{id:'games',icon:'🎮',label:'Oyunlar'},
+{id:'stats',icon:'📊',label:'İstatistik'},
+{id:'settings',icon:'⚙️',label:'Ayarlar'}
+];
+return `<div class="bottom-nav">${items.map(i=>
+`<button class="nav-item${state.screen===i.id?' active':''}" onclick="navigate('${i.id}')">
+<span class="nav-icon">${i.icon}</span><span class="nav-label">${i.label}</span></button>`
+).join('')}</div>`;
+}
+
+// ===================== SPLASH =====================
+function renderSplash(){
+let stars='';
+for(let i=0;i<15;i++){
+stars+=`<div class="splash-star" style="left:${Math.random()*90+5}%;top:${Math.random()*90+5}%;font-size:${Math.random()*20+10}px;animation-delay:${Math.random()*2}s">${['✨','⭐','🌟','💫'][Math.floor(Math.random()*4)]}</div>`;
+}
+let hasLast=state.lastScreen&&state.lastScreen!=='splash';
+return `<div class="screen active splash" id="splashScreen">
+<div class="splash-stars">${stars}</div>
+<div class="splash-emoji">🧒</div>
+<div class="splash-logo">Mihra Öğreniyor</div>
+<div class="splash-sub">Keşfet • Öğren • Eğlen</div>
+<button class="splash-btn" onclick="navigate('home')">🚀 Başlayalım!</button>
+${hasLast?'<button class="splash-btn" style="margin-top:10px;background:transparent;border:2px solid #FFF;color:#FFF;padding:12px 30px;font-size:.9rem" onclick="navigate(\''+state.lastScreen+'\',{catId:\''+state.lastCatId+'\'})">📍 Kaldığım Yerden Devam Et</button>':''}
+<div class="splash-ver">Mihra Öğreniyor v2.0 © 2025</div>
+</div>`;
+}
+
+// ===================== HOME =====================
+function renderHome(){
+let daily=getDailyWord();
+let streak=stats.streak||0;
+let totalWords=Object.keys(stats.itemViews||{}).length;
+let allItemsCount=0;CATEGORIES.forEach(c=>allItemsCount+=c.items.length);
+
+let html=renderHeader('Mihra Öğreniyor',false);
+html+=`<div class="home-content">`;
+// Welcome
+html+=`<div class="welcome-card">
+<div class="welcome-name">Merhaba Mihra! 👋</div>
+<div class="welcome-msg">${getGreeting()} Bugün ne öğrenmek istersin?</div>
+</div>`;
+// Streak
+if(streak>0){
+html+=`<div class="streak-card">
+<div class="streak-fire">🔥</div>
+<div><div class="streak-num">${streak} Gün</div><div class="streak-label">Arka arkaya öğrenme serisi!</div></div>
+</div>`;
+}
+// Daily Word
+html+=`<div class="daily-word" onclick="speak('${daily.n}');trackItemView('${daily.n}')">
+<div class="daily-emoji">${daily.e}</div>
+<div><div class="daily-label">📅 Günün Kelimesi</div>
+<div class="daily-name">${daily.n}</div>
+<div class="daily-cat">${daily.catIcon} ${daily.cat}</div></div>
+</div>`;
+// Progress summary
+html+=`<div class="daily-word" style="cursor:default">
+<div class="daily-emoji">📚</div>
+<div style="flex:1"><div class="daily-label">İlerleme</div>
+<div class="daily-name">${totalWords} / ${allItemsCount} kelime</div>
+<div class="cat-progress" style="margin-top:6px;height:6px"><div class="cat-progress-bar" style="width:${Math.round(totalWords/allItemsCount*100)}%"></div></div></div>
+</div>`;
+// Categories
+html+=`<div class="section-title">📂 Kategoriler</div>`;
+html+=`<div class="cat-grid">`;
+CATEGORIES.forEach(c=>{
+let viewed=0;c.items.forEach(it=>{if(stats.itemViews[it.n])viewed++;});
+let pct=Math.round(viewed/c.items.length*100);
+html+=`<div class="cat-card" onclick="navigate('category',{catId:'${c.id}',cardIndex:0});trackCategoryView('${c.id}')" style="border-bottom:3px solid ${c.gradient[0]}">
+<span class="cat-icon">${c.icon}</span>
+<div class="cat-name">${c.name}</div>
+<div class="cat-count">${c.items.length} kelime</div>
+<div class="cat-progress"><div class="cat-progress-bar" style="width:${pct}%;background:linear-gradient(90deg,${c.gradient[0]},${c.gradient[1]})"></div></div>
+</div>`;
+});
+html+=`</div>`;
+// Quick Games
+html+=`<div class="section-title">🎮 Hızlı Oyun</div>`;
+html+=`<div class="cat-grid">`;
+GAMES.slice(0,4).forEach(g=>{
+html+=`<div class="cat-card" onclick="navigate('gamePlay',{gameId:'${g.id}'})" style="border-bottom:3px solid ${g.color}">
+<span class="cat-icon">${g.icon}</span>
+<div class="cat-name">${g.name}</div>
+<div class="cat-count">${g.desc}</div></div>`;
+});
+html+=`</div></div>`;
+html+=renderNav();
+return `<div class="screen active">${html}</div>`;
+}
+
+function getGreeting(){
+let h=new Date().getHours();
+if(h<12)return '🌅 Günaydın!';
+if(h<18)return '☀️ İyi günler!';
+return '🌙 İyi akşamlar!';
+}
+
+// ===================== CATEGORY VIEW =====================
+function renderCategory(){
+let cat=CATEGORIES.find(c=>c.id===state.catId);
+if(!cat){navigate('home');return '';}
+state.cardIndex=Math.max(0,Math.min(state.cardIndex||0,cat.items.length-1));
+
+let html=renderHeader(cat.icon+' '+cat.name,true);
+html+=`<div class="view-controls">
+<button class="view-btn${state.viewMode==='grid'?' active':''}" onclick="state.viewMode='grid';saveSettings();render()">▦ Izgara</button>
+<button class="view-btn${state.viewMode==='card'?' active':''}" onclick="state.viewMode='card';saveSettings();render()">▢ Kart</button>
+<button class="speak-all-btn" onclick="speakAll()">🔊 Hepsini Oku</button>
+</div>`;
+
+if(state.viewMode==='grid'){
+html+=`<div class="items-grid">`;
+cat.items.forEach((it,i)=>{
+let isViewed=stats.itemViews[it.n]?true:false;
+html+=`<div class="item-card${isViewed?' viewed':''}" onclick="speak('${it.n}');trackItemView('${it.n}');animateCard(this)" data-idx="${i}">
+<div class="item-emoji">${it.e}</div>
+<div class="item-name">${it.n}</div>
+<div class="item-speak">🔊 Dinle</div></div>`;
+});
+html+=`</div>`;
+}else{
+let it=cat.items[state.cardIndex];
+html+=`<div class="card-view"><div class="card-slider">
+<div class="card-single" id="cardSingle">
+<div class="item-emoji">${it.e}</div>
+<div class="item-name">${it.n}</div>
+</div>
+<button class="card-speak-btn" onclick="speak('${it.n}');trackItemView('${it.n}')">🔊 Seslendir</button>
+<div class="card-nav">
+<button class="card-nav-btn" onclick="cardPrev()" ${state.cardIndex<=0?'disabled':''}>◂</button>
+<span class="card-counter">${state.cardIndex+1} / ${cat.items.length}</span>
+<button class="card-nav-btn" onclick="cardNext()" ${state.cardIndex>=cat.items.length-1?'disabled':''}>▸</button>
+</div>
+</div></div>`;
+}
+html+=renderNav();
+return `<div class="screen active">${html}</div>`;
+}
+
+function cardPrev(){
+let cat=CATEGORIES.find(c=>c.id===state.catId);
+if(state.cardIndex>0){state.cardIndex--;render();
+let it=cat.items[state.cardIndex];speak(it.n);trackItemView(it.n);}
+}
+function cardNext(){
+let cat=CATEGORIES.find(c=>c.id===state.catId);
+if(state.cardIndex<cat.items.length-1){state.cardIndex++;render();
+let it=cat.items[state.cardIndex];speak(it.n);trackItemView(it.n);}
+}
+function speakAll(){
+let cat=CATEGORIES.find(c=>c.id===state.catId);if(!cat)return;
+let i=0;
+function next(){
+if(i>=cat.items.length)return;
+speak(cat.items[i].n);trackItemView(cat.items[i].n);i++;
+setTimeout(next,1500);
+}
+next();
+}
+function animateCard(el){
+el.style.transform='scale(1.1)';
+setTimeout(()=>el.style.transform='',300);
+}
+
+// ===================== GAMES MENU =====================
+function renderGames(){
+let html=renderHeader('🎮 Oyunlar',false);
+html+=`<div class="games-content">
+<div class="section-title">🎯 Mini Oyunlar</div>
+<div class="game-list">`;
+GAMES.forEach(g=>{
+let played=stats.gameTypes[g.id]||0;
+html+=`<div class="game-card" onclick="navigate('gamePlay',{gameId:'${g.id}'})" style="border-bottom:3px solid ${g.color}">
+<div class="game-icon">${g.icon}</div>
+<div class="game-name">${g.name}</div>
+<div class="game-desc">${g.desc}</div>
+${played>0?'<div style="font-size:.65rem;color:var(--c2);margin-top:4px;font-weight:700">'+played+' kez oynandı</div>':''}
+</div>`;
+});
+html+=`</div></div>`;
+html+=renderNav();
+return `<div class="screen active">${html}</div>`;
+}
+
+// ===================== GAME PLAY =====================
+let gameState={};
+
+function renderGamePlay(){
+let game=GAMES.find(g=>g.id===state.gameId);
+if(!game){navigate('games');return '';}
+let html=renderHeader(game.icon+' '+game.name,true);
+html+=`<div class="game-area" id="gameArea">`;
+switch(state.gameId){
+case 'find':html+=renderFindGame();break;
+case 'memory':html+=renderMemoryGame();break;
+case 'colorMatch':html+=renderColorMatchGame();break;
+case 'count':html+=renderCountGame();break;
+case 'shadow':html+=renderShadowGame();break;
+case 'category':html+=renderCategoryGame();break;
+}
+html+=`</div>`;
+html+=renderNav();
+return `<div class="screen active">${html}</div>`;
+}
+
+// FIND GAME
+function renderFindGame(){
+if(!gameState.active||gameState.type!=='find'){
+gameState={type:'find',active:true,score:0,round:0,total:8,answered:false};
+}
+if(gameState.round>=gameState.total){
+return renderGameResult(gameState.score,gameState.total);
+}
+let allItems=[];CATEGORIES.forEach(c=>c.items.forEach(it=>allItems.push(it)));
+let shuffled=shuffleArray([...allItems]);
+let correct=shuffled[0];
+let options=shuffled.slice(0,4);
+options=shuffleArray(options);
+gameState.correctAnswer=correct.n;
+gameState.options=options;
+gameState.answered=false;
+
+setTimeout(()=>speak(correct.n),500);
+
+return `<div class="game-score">⭐ ${gameState.score} / ${gameState.total} &nbsp;|&nbsp; Soru ${gameState.round+1}</div>
+<div class="game-question">🔊 "${correct.n}" nerede?</div>
+<div class="game-options">${options.map((o,i)=>
+`<div class="game-option" onclick="checkFindAnswer(this,${i},'${o.n}')" data-name="${o.n}">${o.e}</div>`
+).join('')}</div>`;
+}
+
+function checkFindAnswer(el,idx,name){
+if(gameState.answered)return;
+gameState.answered=true;
+let allOpts=document.querySelectorAll('.game-option');
+if(name===gameState.correctAnswer){
+el.classList.add('correct');
+gameState.score++;
+playCorrectSound();
+showConfetti();
+speak('Aferin! '+name);
+}else{
+el.classList.add('wrong');
+playWrongSound();
+allOpts.forEach(o=>{if(o.dataset.name===gameState.correctAnswer)o.classList.add('correct');});
+speak(gameState.correctAnswer);
+}
+allOpts.forEach(o=>o.classList.add('disabled'));
+setTimeout(()=>{gameState.round++;render();},1800);
+}
+
+// MEMORY GAME
+function renderMemoryGame(){
+if(!gameState.active||gameState.type!=='memory'){
+let allItems=[];CATEGORIES.forEach(c=>c.items.forEach(it=>allItems.push(it)));
+let picked=shuffleArray([...allItems]).slice(0,6);
+let cards=[...picked,...picked].map((it,i)=>({id:i,e:it.e,n:it.n,pairId:picked.indexOf(it)}));
+cards=shuffleArray(cards.map((c,i)=>({...c,uid:i})));
+gameState={type:'memory',active:true,cards,flipped:[],matched:[],moves:0,pairs:6,foundPairs:0};
+}
+if(gameState.foundPairs>=gameState.pairs){
+return renderGameResult(gameState.pairs,gameState.pairs);
+}
+return `<div class="game-score">🃏 ${gameState.foundPairs}/${gameState.pairs} eşleşme &nbsp;|&nbsp; ${gameState.moves} hamle</div>
+<div class="memory-grid">${gameState.cards.map((c,i)=>{
+let isFlipped=gameState.flipped.includes(i);
+let isMatched=gameState.matched.includes(c.n);
+return `<div class="memory-card${isFlipped?' flipped':''}${isMatched?' matched':''}" onclick="flipCard(${i})">${isFlipped||isMatched?c.e:''}</div>`;
+}).join('')}</div>`;
+}
+
+function flipCard(idx){
+if(gameState.flipped.length>=2)return;
+if(gameState.flipped.includes(idx))return;
+if(gameState.matched.includes(gameState.cards[idx].n))return;
+gameState.flipped.push(idx);
+gameState.moves++;
+speak(gameState.cards[idx].n);
+render();
+if(gameState.flipped.length===2){
+let c1=gameState.cards[gameState.flipped[0]];
+let c2=gameState.cards[gameState.flipped[1]];
+if(c1.n===c2.n){
+gameState.matched.push(c1.n);
+gameState.foundPairs++;
+gameState.flipped=[];
+playCorrectSound();
+if(gameState.foundPairs>=gameState.pairs){
+trackGamePlayed('memory',gameState.pairs,gameState.pairs);
+showConfetti();
+}
+setTimeout(()=>render(),400);
+}else{
+playWrongSound();
+setTimeout(()=>{gameState.flipped=[];render();},1000);
+}
+}
+}
+
+// COLOR MATCH GAME
+function renderColorMatchGame(){
+if(!gameState.active||gameState.type!=='colorMatch'){
+gameState={type:'colorMatch',active:true,score:0,round:0,total:6,answered:false};
+}
+if(gameState.round>=gameState.total){
+return renderGameResult(gameState.score,gameState.total);
+}
+let colorMap=[
+{name:'Kırmızı',hex:'#FF0000',items:['🍎','🍓','❤️','🌹']},
+{name:'Mavi',hex:'#0000FF',items:['🔵','💙','🫐','🧊']},
+{name:'Yeşil',hex:'#00AA00',items:['🍀','🥒','🐸','🌿']},
+{name:'Sarı',hex:'#FFD700',items:['🌟','🍌','🌻','🐥']},
+{name:'Turuncu',hex:'#FF8C00',items:['🍊','🥕','🎃','🔶']},
+{name:'Mor',hex:'#8B00FF',items:['🍇','🔮','🟣','🍆']}
+];
+let target=colorMap[gameState.round%colorMap.length];
+let wrongColors=colorMap.filter(c=>c.name!==target.name);
+let options=[{e:target.items[Math.floor(Math.random()*target.items.length)],correct:true,name:target.name}];
+for(let i=0;i<3;i++){
+let wc=wrongColors[i%wrongColors.length];
+options.push({e:wc.items[Math.floor(Math.random()*wc.items.length)],correct:false,name:wc.name});
+}
+options=shuffleArray(options);
+gameState.answered=false;
+setTimeout(()=>speak(target.name+' rengini bul'),300);
+
+return `<div class="game-score">⭐ ${gameState.score} / ${gameState.total} &nbsp;|&nbsp; Soru ${gameState.round+1}</div>
+<div class="color-target" style="background:${target.hex}"></div>
+<div class="game-question">${target.name} renkli olanı bul!</div>
+<div class="game-options">${options.map((o,i)=>
+`<div class="game-option" onclick="checkColorAnswer(this,${o.correct})">${o.e}</div>`
+).join('')}</div>`;
+}
+
+function checkColorAnswer(el,correct){
+if(gameState.answered)return;
+gameState.answered=true;
+if(correct){el.classList.add('correct');gameState.score++;playCorrectSound();speak('Doğru!');}
+else{el.classList.add('wrong');playWrongSound();speak('Tekrar dene!');}
+document.querySelectorAll('.game-option').forEach(o=>o.classList.add('disabled'));
+setTimeout(()=>{gameState.round++;render();},1500);
+}
+
+// COUNT GAME
+function renderCountGame(){
+if(!gameState.active||gameState.type!=='count'){
+gameState={type:'count',active:true,score:0,round:0,total:6,answered:false};
+}
+if(gameState.round>=gameState.total){
+return renderGameResult(gameState.score,gameState.total);
+}
+let emojis=['🍎','⭐','🌸','🐱','🎈','❤️','🐟','🌙'];
+let emoji=emojis[gameState.round%emojis.length];
+let count=Math.floor(Math.random()*4)+1;
+let display=[];for(let i=0;i<count;i++)display.push(emoji);
+let options=[count];
+while(options.length<4){let n=Math.floor(Math.random()*5)+1;if(!options.includes(n))options.push(n);}
+options=shuffleArray(options);
+gameState.correctCount=count;
+gameState.answered=false;
+setTimeout(()=>speak('Kaç tane '+emoji+' var?'),300);
+
+return `<div class="game-score">⭐ ${gameState.score} / ${gameState.total} &nbsp;|&nbsp; Soru ${gameState.round+1}</div>
+<div class="game-question">Kaç tane var?</div>
+<div style="font-size:3rem;text-align:center;margin:10px 0;letter-spacing:15px">${display.join(' ')}</div>
+<div class="game-options">${options.map(n=>
+`<div class="game-option" style="font-size:2rem;font-weight:900" onclick="checkCountAnswer(this,${n})">${n}</div>`
+).join('')}</div>`;
+}
+
+function checkCountAnswer(el,n){
+if(gameState.answered)return;
+gameState.answered=true;
+if(n===gameState.correctCount){el.classList.add('correct');gameState.score++;playCorrectSound();speak('Doğru! '+n);}
+else{el.classList.add('wrong');playWrongSound();speak('Doğrusu '+gameState.correctCount);}
+document.querySelectorAll('.game-option').forEach(o=>o.classList.add('disabled'));
+setTimeout(()=>{gameState.round++;render();},1500);
+}
+
+// SHADOW GAME (simplified matching)
+function renderShadowGame(){
+if(!gameState.active||gameState.type!=='shadow'){
+gameState={type:'shadow',active:true,score:0,round:0,total:6,answered:false};
+}
+if(gameState.round>=gameState.total){
+return renderGameResult(gameState.score,gameState.total);
+}
+let allItems=[];CATEGORIES.forEach(c=>c.items.forEach(it=>allItems.push(it)));
+let shuffled=shuffleArray([...allItems]);
+let correct=shuffled[0];
+let options=shuffled.slice(0,4);options=shuffleArray(options);
+gameState.correctAnswer=correct.n;
+gameState.answered=false;
+setTimeout(()=>speak(correct.n+' hangisi?'),300);
+
+return `<div class="game-score">⭐ ${gameState.score} / ${gameState.total} &nbsp;|&nbsp; Soru ${gameState.round+1}</div>
+<div style="font-size:5rem;text-align:center;filter:brightness(0);opacity:.7;margin:10px 0">${correct.e}</div>
+<div class="game-question">Bu gölge kime ait?</div>
+<div class="game-options">${options.map(o=>
+`<div class="game-option" onclick="checkShadowAnswer(this,'${o.n}')">${o.e}</div>`
+).join('')}</div>`;
+}
+
+function checkShadowAnswer(el,name){
+if(gameState.answered)return;
+gameState.answered=true;
+if(name===gameState.correctAnswer){el.classList.add('correct');gameState.score++;playCorrectSound();speak('Aferin! '+name);}
+else{el.classList.add('wrong');playWrongSound();speak('Bu '+gameState.correctAnswer);}
+document.querySelectorAll('.game-option').forEach(o=>o.classList.add('disabled'));
+setTimeout(()=>{gameState.round++;render();},1500);
+}
+
+// CATEGORY SORT GAME
+function renderCategoryGame(){
+if(!gameState.active||gameState.type!=='category'){
+gameState={type:'category',active:true,score:0,round:0,total:8,answered:false};
+}
+if(gameState.round>=gameState.total){
+return renderGameResult(gameState.score,gameState.total);
+}
+let cats=shuffleArray([...CATEGORIES]).slice(0,2);
+let cat1=cats[0],cat2=cats[1];
+let item=Math.random()>0.5?
+{...cat1.items[Math.floor(Math.random()*cat1.items.length)],correctCat:cat1.id,correctName:cat1.name}:
+{...cat2.items[Math.floor(Math.random()*cat2.items.length)],correctCat:cat2.id,correctName:cat2.name};
+gameState.correctCat=item.correctCat;
+gameState.answered=false;
+setTimeout(()=>speak(item.n+' hangi kategoride?'),300);
+
+return `<div class="game-score">⭐ ${gameState.score} / ${gameState.total} &nbsp;|&nbsp; Soru ${gameState.round+1}</div>
+<div style="font-size:4rem;text-align:center;margin:10px 0">${item.e}</div>
+<div class="game-question">"${item.n}" hangi gruba ait?</div>
+<div class="game-options" style="grid-template-columns:1fr 1fr">
+<div class="game-option" style="font-size:1rem;padding:15px" onclick="checkCatAnswer(this,'${cat1.id}')">
+<div style="font-size:2rem">${cat1.icon}</div>${cat1.name}</div>
+<div class="game-option" style="font-size:1rem;padding:15px" onclick="checkCatAnswer(this,'${cat2.id}')">
+<div style="font-size:2rem">${cat2.icon}</div>${cat2.name}</div>
+</div>`;
+}
+
+function checkCatAnswer(el,catId){
+if(gameState.answered)return;
+gameState.answered=true;
+if(catId===gameState.correctCat){el.classList.add('correct');gameState.score++;playCorrectSound();speak('Doğru!');}
+else{el.classList.add('wrong');playWrongSound();speak('Yanlış!');}
+document.querySelectorAll('.game-option').forEach(o=>o.classList.add('disabled'));
+setTimeout(()=>{gameState.round++;render();},1500);
+}
+
+function renderGameResult(score,total){
+let pct=Math.round(score/total*100);
+let emoji=pct>=80?'🏆':pct>=50?'⭐':'💪';
+let msg=pct>=80?'Harikasın Mihra!':pct>=50?'Çok iyi gidiyorsun!':'Tekrar deneyebilirsin!';
+trackGamePlayed(state.gameId,score,total);
+if(pct>=80)showConfetti();
+
+return `<div class="game-result">
+<div class="game-result-emoji">${emoji}</div>
+<div class="game-result-text">${msg}</div>
+<div class="game-result-score">${score} / ${total} doğru (${pct}%)</div>
+<button class="game-result-btn" onclick="gameState={};render()">🔄 Tekrar Oyna</button>
+<button class="game-result-btn" style="background:var(--c2);margin-left:8px" onclick="navigate('games')">🏠 Oyunlar</button>
+</div>`;
+}
+
+function shuffleArray(arr){
+for(let i=arr.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+return arr;
+}
+
+// ===================== STATISTICS =====================
+function renderStats(){
+let html=renderHeader('📊 İstatistikler',false);
+html+=`<div class="stats-content">`;
+
+let totalItems=0;CATEGORIES.forEach(c=>totalItems+=c.items.length);
+let learnedItems=Object.keys(stats.itemViews||{}).length;
+let totalSessions=Object.keys(stats.dailyUsage||{}).length;
+
+// Overview
+html+=`<div class="stat-card"><div class="stat-title">📋 Genel Bakış</div>
+<div class="stat-grid">
+<div class="stat-item"><div class="stat-num">${formatTime(stats.totalTime||0)}</div><div class="stat-label">Toplam Süre</div></div>
+<div class="stat-item"><div class="stat-num">${learnedItems}</div><div class="stat-label">Öğrenilen Kelime</div></div>
+<div class="stat-item"><div class="stat-num">${totalSessions}</div><div class="stat-label">Oturum</div></div>
+<div class="stat-item"><div class="stat-num">${stats.gamesPlayed||0}</div><div class="stat-label">Oyun</div></div>
+<div class="stat-item"><div class="stat-num">${stats.streak||0}🔥</div><div class="stat-label">Seri</div></div>
+<div class="stat-item"><div class="stat-num">${Math.round(learnedItems/totalItems*100)}%</div><div class="stat-label">İlerleme</div></div>
+</div></div>`;
+
+// Category chart
+html+=`<div class="stat-card"><div class="stat-title">📂 Kategori Kullanımı</div>
+<div class="chart-container"><canvas id="catChart" height="180"></canvas></div></div>`;
+
+// Daily usage chart
+html+=`<div class="stat-card"><div class="stat-title">📅 Günlük Kullanım</div>
+<div class="chart-container"><canvas id="dailyChart" height="180"></canvas></div></div>`;
+
+// Hourly chart
+html+=`<div class="stat-card"><div class="stat-title">⏰ Saatlik Dağılım</div>
+<div class="chart-container"><canvas id="hourlyChart" height="180"></canvas></div></div>`;
+
+// Most viewed items
+let topItems=Object.entries(stats.itemViews||{}).sort((a,b)=>b[1]-a[1]).slice(0,10);
+if(topItems.length>0){
+html+=`<div class="stat-card"><div class="stat-title">🏆 En Çok İncelenen</div><ul class="stat-list">`;
+topItems.forEach(([name,count],i)=>{
+let item=null;CATEGORIES.forEach(c=>c.items.forEach(it=>{if(it.n===name)item=it;}));
+html+=`<li><span class="rank">${i+1}.</span><span class="sname">${item?item.e+' ':' '}${name}</span><span class="sval">${count}x</span></li>`;
+});
+html+=`</ul></div>`;
+}
+
+// Game scores
+let gameEntries=Object.entries(stats.gameScores||{});
+if(gameEntries.length>0){
+html+=`<div class="stat-card"><div class="stat-title">🎮 Oyun Skorları</div><ul class="stat-list">`;
+gameEntries.forEach(([gid,scores])=>{
+let game=GAMES.find(g=>g.id===gid);
+let best=scores.reduce((max,s)=>s.score>max?s.score:max,0);
+let total=scores[0]?scores[0].total:0;
+let avg=scores.length>0?Math.round(scores.reduce((s,x)=>s+x.score,0)/scores.length*10)/10:0;
+html+=`<li><span class="sname">${game?game.icon+' '+game.name:gid}</span><span class="sval">En iyi: ${best}/${total} | Ort: ${avg}</span></li>`;
+});
+html+=`</ul></div>`;
+}
+
+// Category progress
+html+=`<div class="stat-card"><div class="stat-title">📊 Kategori İlerleme</div><ul class="stat-list">`;
+CATEGORIES.forEach(c=>{
+let viewed=0;c.items.forEach(it=>{if(stats.itemViews[it.n])viewed++;});
+let pct=Math.round(viewed/c.items.length*100);
+html+=`<li><span class="sname">${c.icon} ${c.name}</span><span class="sval">${viewed}/${c.items.length} (${pct}%)</span></li>`;
+});
+html+=`</ul></div>`;
+
+// Achievements
+html+=`<div class="stat-card"><div class="stat-title">🏅 Rozetler (${(stats.earnedBadges||[]).length}/${ACHIEVEMENTS.length})</div>
+<div class="badge-grid">`;
+ACHIEVEMENTS.forEach(a=>{
+let earned=(stats.earnedBadges||[]).includes(a.id);
+html+=`<div class="badge${earned?' earned':''}" title="${a.desc}">
+<div class="badge-icon">${a.icon}</div><div class="badge-name">${a.name}</div></div>`;
+});
+html+=`</div></div>`;
+
+// Usage calendar (last 14 days)
+html+=`<div class="stat-card"><div class="stat-title">📆 Son 14 Gün</div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center">`;
+let today=new Date();
+for(let i=13;i>=0;i--){
+let d=new Date(today);d.setDate(d.getDate()-i);
+let key=d.toISOString().split('T')[0];
+let usage=stats.dailyUsage[key]||0;
+let intensity=usage===0?0:Math.min(1,usage/300);
+let bg=usage>0?`rgba(78,205,196,${0.2+intensity*0.8})`:'var(--bg)';
+let dayName=['Pz','Pt','Sa','Ça','Pe','Cu','Ct'][d.getDay()];
+html+=`<div style="padding:6px 2px;border-radius:6px;background:${bg};font-size:.6rem;font-weight:600">
+<div>${dayName}</div><div style="font-size:.55rem;opacity:.7">${d.getDate()}</div></div>`;
+}
+html+=`</div></div>`;
+
+// Reset button
+html+=`<button class="reset-btn" onclick="showModal('İstatistikleri Sıfırla','Tüm istatistikler silinecek. Emin misiniz?',resetAllStats,true)">🗑️ İstatistikleri Sıfırla</button>`;
+
+html+=`</div>`;
+html+=renderNav();
+
+setTimeout(()=>{drawCharts();},100);
+return `<div class="screen active">${html}</div>`;
+}
+
+function drawCharts(){
+// Category chart
+let catCanvas=document.getElementById('catChart');
+if(catCanvas){
+let ctx=catCanvas.getContext('2d');
+catCanvas.width=catCanvas.parentElement.offsetWidth;
+catCanvas.height=180;
+let data=CATEGORIES.map(c=>({label:c.icon,value:stats.categoryViews[c.id]||0,color:c.gradient[0]}));
+data.sort((a,b)=>b.value-a.value);
+data=data.slice(0,10);
+let maxVal=Math.max(...data.map(d=>d.value),1);
+let barW=(catCanvas.width-40)/data.length;
+let isDark=state.theme==='night';
+ctx.fillStyle=isDark?'#1A1A2E':'#FFFFFF';ctx.fillRect(0,0,catCanvas.width,catCanvas.height);
+data.forEach((d,i)=>{
+let h=(d.value/maxVal)*130;
+let x=20+i*barW;
+ctx.fillStyle=d.color;
+ctx.beginPath();
+ctx.roundRect(x+4,150-h,barW-8,h,[4,4,0,0]);
+ctx.fill();
+ctx.fillStyle=isDark?'#FFFFFF':'#2D3436';
+ctx.font='bold 14px Nunito';ctx.textAlign='center';
+ctx.fillText(d.label,x+barW/2,168);
+if(d.value>0){ctx.font='bold 10px Nunito';ctx.fillText(d.value,x+barW/2,145-h);}
+});
+}
+// Daily chart
+let dailyCanvas=document.getElementById('dailyChart');
+if(dailyCanvas){
+let ctx=dailyCanvas.getContext('2d');
+dailyCanvas.width=dailyCanvas.parentElement.offsetWidth;
+dailyCanvas.height=180;
+let isDark=state.theme==='night';
+ctx.fillStyle=isDark?'#1A1A2E':'#FFFFFF';ctx.fillRect(0,0,dailyCanvas.width,dailyCanvas.height);
+let today=new Date();
+let data=[];
+for(let i=6;i>=0;i--){
+let d=new Date(today);d.setDate(d.getDate()-i);
+let key=d.toISOString().split('T')[0];
+data.push({label:['Pz','Pt','Sa','Ça','Pe','Cu','Ct'][d.getDay()],value:stats.dailyUsage[key]||0});
+}
+let maxVal=Math.max(...data.map(d=>d.value),1);
+let barW=(dailyCanvas.width-40)/data.length;
+data.forEach((d,i)=>{
+let h=(d.value/maxVal)*130;
+let x=20+i*barW;
+let gradient=ctx.createLinearGradient(x,150-h,x,150);
+gradient.addColorStop(0,'#4ECDC4');gradient.addColorStop(1,'#FF6B6B');
+ctx.fillStyle=gradient;
+ctx.beginPath();ctx.roundRect(x+6,150-h,barW-12,h,[6,6,0,0]);ctx.fill();
+ctx.fillStyle=isDark?'#FFFFFF':'#2D3436';
+ctx.font='bold 11px Nunito';ctx.textAlign='center';
+ctx.fillText(d.label,x+barW/2,168);
+if(d.value>0){ctx.font='bold 9px Nunito';ctx.fillText(formatTime(d.value),x+barW/2,143-h);}
+});
+}
+// Hourly chart
+let hourlyCanvas=document.getElementById('hourlyChart');
+if(hourlyCanvas){
+let ctx=hourlyCanvas.getContext('2d');
+hourlyCanvas.width=hourlyCanvas.parentElement.offsetWidth;
+hourlyCanvas.height=180;
+let isDark=state.theme==='night';
+ctx.fillStyle=isDark?'#1A1A2E':'#FFFFFF';ctx.fillRect(0,0,hourlyCanvas.width,hourlyCanvas.height);
+let data=[];
+for(let h=6;h<=22;h++){
+data.push({label:h+'',value:stats.hourlyUsage[h]||0});
+}
+let maxVal=Math.max(...data.map(d=>d.value),1);
+let barW=(hourlyCanvas.width-30)/data.length;
+data.forEach((d,i)=>{
+let h=(d.value/maxVal)*125;
+let x=15+i*barW;
+ctx.fillStyle=d.value>0?'#A29BFE':'#DFE6E9';
+ctx.beginPath();ctx.roundRect(x+2,145-h,barW-4,h,[3,3,0,0]);ctx.fill();
+ctx.fillStyle=isDark?'#B2BEC3':'#636E72';
+ctx.font='bold 8px Nunito';ctx.textAlign='center';
+ctx.fillText(d.label,x+barW/2,162);
+});
+}
+}
+
+// Canvas roundRect polyfill
+if(!CanvasRenderingContext2D.prototype.roundRect){
+CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
+if(!Array.isArray(r))r=[r,r,r,r];
+this.moveTo(x+r[0],y);this.lineTo(x+w-r[1],y);this.quadraticCurveTo(x+w,y,x+w,y+r[1]);
+this.lineTo(x+w,y+h-r[2]);this.quadraticCurveTo(x+w,y+h,x+w-r[2],y+h);
+this.lineTo(x+r[3],y+h);this.quadraticCurveTo(x,y+h,x,y+h-r[3]);
+this.lineTo(x,y+r[0]);this.quadraticCurveTo(x,y,x+r[0],y);this.closePath();
+};
+}
+
+// ===================== SETTINGS =====================
+function renderSettings(){
+let html=renderHeader('⚙️ Ayarlar',false);
+html+=`<div class="settings-content">`;
+
+// Theme
+html+=`<div class="setting-group"><div class="setting-title">🎨 Tema</div>
+<div class="theme-grid">`;
+THEMES.forEach(t=>{
+html+=`<div class="theme-btn${state.theme===t.id?' active':''}" onclick="setTheme('${t.id}')">
+<div class="theme-icon">${t.icon}</div><div class="theme-name">${t.name}</div></div>`;
+});
+html+=`</div></div>`;
+
+// View mode
+html+=`<div class="setting-group"><div class="setting-title">👁️ Görünüm</div>
+<div class="setting-row"><span class="setting-label">Varsayılan Görünüm</span>
+<button class="view-btn active" onclick="state.viewMode=state.viewMode==='grid'?'card':'grid';saveSettings();render()">
+${state.viewMode==='grid'?'▦ Izgara':'▢ Kart'}</button></div>
+<div class="setting-row"><span class="setting-label">Yakınlaştırma</span>
+<span class="setting-value">${Math.round(state.zoom*100)}%</span></div>
+</div>`;
+
+// Info
+html+=`<div class="setting-group"><div class="setting-title">ℹ️ Uygulama Bilgisi</div>
+<div class="setting-row"><span class="setting-label">Versiyon</span><span class="setting-value">2.0</span></div>
+<div class="setting-row"><span class="setting-label">Toplam Kategori</span><span class="setting-value">${CATEGORIES.length}</span></div>
+<div class="setting-row"><span class="setting-label">Toplam Kelime</span><span class="setting-value">${CATEGORIES.reduce((s,c)=>s+c.items.length,0)}</span></div>
+<div class="setting-row"><span class="setting-label">Toplam Oyun</span><span class="setting-value">${GAMES.length}</span></div>
+<div class="setting-row"><span class="setting-label">Veri Depolama</span><span class="setting-value">Yerel (Tarayıcı)</span></div>
+</div>`;
+
+// Achievements summary
+html+=`<div class="setting-group"><div class="setting-title">🏅 Rozetler</div>
+<div class="badge-grid">`;
+ACHIEVEMENTS.forEach(a=>{
+let earned=(stats.earnedBadges||[]).includes(a.id);
+html+=`<div class="badge${earned?' earned':''}" title="${a.desc}">
+<div class="badge-icon">${a.icon}</div><div class="badge-name">${a.name}</div></div>`;
+});
+html+=`</div></div>`;
+
+// Export/Reset
+html+=`<div class="setting-group"><div class="setting-title">🔧 Veri Yönetimi</div>
+<button class="reset-btn" style="border-color:var(--c2);color:var(--c2);margin-bottom:8px" onclick="exportData()">📤 Verileri Dışa Aktar</button>
+<button class="reset-btn" onclick="showModal('İstatistikleri Sıfırla','Tüm veriler silinecek. Emin misiniz?',resetAllStats,true)">🗑️ Tüm Verileri Sıfırla</button>
+</div>`;
+
+// Credits
+html+=`<div class="setting-group" style="text-align:center;padding:20px">
+<div style="font-size:2rem;margin-bottom:8px">🧒✨</div>
+<div style="font-weight:900;font-size:1.1rem;color:var(--c1)">Mihra Öğreniyor</div>
+<div style="font-size:.75rem;color:var(--text2);margin-top:4px">Sevgiyle tasarlandı © 2025</div>
+<div style="font-size:.65rem;color:var(--text2);margin-top:2px">Tüm Hakları Saklıdır</div>
+</div>`;
+
+html+=`</div>`;
+html+=renderNav();
+return `<div class="screen active">${html}</div>`;
+}
+
+function setTheme(id){
+state.theme=id;
+document.documentElement.setAttribute('data-theme',id);
+saveSettings();render();
+}
+
+function exportData(){
+let data={stats,settings:{theme:state.theme,viewMode:state.viewMode},exportDate:new Date().toISOString()};
+let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+let a=document.createElement('a');a.href=URL.createObjectURL(blob);
+a.download='mihra_ogr_'+new Date().toISOString().split('T')[0]+'.json';
+a.click();showToast('Veriler dışa aktarıldı!');
+}
+
+// ===================== EVENTS =====================
+function bindEvents(){
+// Swipe for card view
+let area=document.getElementById('app');
+let startX=0,startY=0;
+area.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;},{passive:true});
+area.addEventListener('touchend',e=>{
+if(state.screen!=='category'||state.viewMode!=='card')return;
+let dx=e.changedTouches[0].clientX-startX;
+let dy=e.changedTouches[0].clientY-startY;
+if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
+if(dx<0)cardNext();else cardPrev();
+}
+},{passive:true});
+}
+
+// ===================== TIMER =====================
+function startSessionTimer(){
+sessionTimer=setInterval(()=>{
+let el=document.getElementById('sessionTimer');
+if(el){
+let elapsed=Math.floor((Date.now()-sessionStart)/1000);
+let m=Math.floor(elapsed/60).toString().padStart(2,'0');
+let s=(elapsed%60).toString().padStart(2,'0');
+el.textContent=m+':'+s;
+}
+trackTime();
+},1000);
+}
+
+// ===================== INIT =====================
+function init(){
+loadStats();
+loadSettings();
+// Apply zoom
+if(state.zoom!==1){
+document.getElementById('app-wrapper').style.transform='scale('+state.zoom+')';
+}
+render();
+startSessionTimer();
+// Record session
+let now=new Date();
+if(!stats.sessions)stats.sessions=[];
+stats.sessions.push({date:now.toISOString(),startTime:now.toTimeString().substring(0,5)});
+saveStats();
+checkAchievements();
+
+// Orientation change
+window.addEventListener('resize',()=>{
+// Re-render charts if on stats screen
+if(state.screen==='stats')setTimeout(drawCharts,200);
 });
 
-// ===== TOUCH SWIPE FOR SINGLE VIEW =====
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  
-  if (Math.abs(diff) > 50 && currentView === 'single' && currentCategory) {
-    if (diff > 0) nextCard();
-    else prevCard();
-  }
-}, { passive: true });
-
-// ===== INIT =====
-window.addEventListener('load', () => {
-  initSplash();
+// Fullscreen change
+document.addEventListener('fullscreenchange',()=>{
+let btn=document.getElementById('fsBtn');
+if(btn)btn.textContent=document.fullscreenElement?'⛶':'⛶';
 });
 
-// Prevent zoom on double tap
-document.addEventListener('dblclick', (e) => {
-  e.preventDefault();
+// Page visibility - pause timer
+document.addEventListener('visibilitychange',()=>{
+if(document.hidden){clearInterval(sessionTimer);}
+else{startSessionTimer();}
 });
+}
 
+// Start app
+document.addEventListener('DOMContentLoaded',init);
+// Backup init
+if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(init,1);
 </script>
 </body>
 </html>
